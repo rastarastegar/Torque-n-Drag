@@ -1,9 +1,7 @@
 # Torque-n-Drag
 A Reactive Web-based Torque and Drag Analysis Application
 
-
-* Project Manager: Reza Rastegar
-* Git Master: Reza Rastegar
+* Project Lead & Git Master: Reza Rastegar
 * Deployed Project: TBD
 * GitHub repository: https://github.com/rastarastegar/Torque-n-Drag
 
