@@ -40,13 +40,11 @@ Coding standards | Good quality | Indentation, scoping, naming (ESLint)
 API keys in node with environment variables |
 Incorporate authentication | Passportjs |
 Existing public dataset to power database | Casing Data | From casing data handbooks 
-Create a migration strategy | Share data across team members | Schema/seed.sql file
-     
+Create a migration strategy | Share data across team members | Schema/seed.sql file   
  
 ### Key Personnel
-
 Name | Role(s) | Contribution(s)
------|--------
+-----|---------|---------------
 Austin Plumly | Team Member | Routing, Backend Coding
 Leo Ndichu | Team Member | Graphing Technology
 Luis Luna | Team Member | Landing Page and UI
