@@ -1,0 +1,26 @@
+/* Main.css */
+
+.section {
+    background-image: url(images/drilling-img-3.jpg);
+    background-size: cover;
+    height: 400px;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    #banner {
+        background-image: url(images/drilling-img-3.jpg);
+        background-size: cover;
+      }
+    
+    }    
+
+
+@media only screen and (max-width: 576px) {
+.section{
+    background-image: url(images/drilling-img-3-mobile.jpg);
+    background-size: cover;
+    height: 200px;
+}
+}
