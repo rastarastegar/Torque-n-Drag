@@ -2,3 +2,22 @@
 .wrapper {
   width: 1028px;
 }
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+
+body, h1, h2 {
+font-family: 'Hind', sans-serif;
+}
+
+h2 {
+  color: #212432;
+}

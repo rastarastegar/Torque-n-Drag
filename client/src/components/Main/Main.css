@@ -1,26 +1,99 @@
 /* Main.css */
 
-.section {
+.banner {
     background-image: url(images/drilling-img-3.jpg);
     background-size: cover;
-    height: 400px;
+    height: 600px;
+    margin-bottom: 40px;
+}
+
+.mobile-tagline {
+    display: none;
+  }
+
+.space {
+    margin-bottom: 40px;
 }
 
 
+ .btn-primary {
+    color: #002d68;
+    background-color: #d4d4d4e6;
+    font-size: 20px;
+    width: 200px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-right: 5px;
+}
+
+.btn-success {
+    color: #002d68;
+    background-color: #1ac528e6;
+    font-size: 20px;
+    width: 200px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-left: 5px;
+}
+
+.btn-primary:hover {
+    color: #002d68;
+    border: none;
+    background-color: rgb(255, 238, 80, 0.8);
+} 
+
+h1 {
+  color: #2e2727;
+}
+
+/* ---------------------------------Breakpoints --------------------------------- */
+
+
+@media only screen and (max-width: 992px) {
+
+.banner {
+    background-image: url(images/drilling-img-3-992.jpg);
+    background-size: cover;
+  }
+}
 
 @media only screen and (max-width: 768px) {
-    #banner {
-        background-image: url(images/drilling-img-3.jpg);
-        background-size: cover;
-      }
+.banner{
+    background-image: url(images/drilling-img-3-768.jpg);
+    background-size: cover;
+}
+
     
     }    
 
 
 @media only screen and (max-width: 576px) {
-.section{
+.banner {
     background-image: url(images/drilling-img-3-mobile.jpg);
     background-size: cover;
     height: 200px;
+    margin-bottom: 0;
+
 }
+
+#tagline-block {
+    display: none;
+}
+
+.mobile-tagline {
+    display: block;
+    background-color: #293652;
+    color: #fff;
+    height: 100px;
+    margin-top: -1px;
+    padding: 25px 0 0 17px;
+}
+
+h1 {
+    font-size: 20px;
+    color: #fff;
+  }
+
 }
