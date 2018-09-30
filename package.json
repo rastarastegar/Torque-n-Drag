@@ -1,0 +1,30 @@
+{
+  "name": "Torque-N-Drag",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "sequelize": "4.39.0",
+    "mysql": "2.16.0",
+    "react-file-reader":"1.1.4",
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "if-env": "^1.0.4"
+  }
+}
