@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "./Header.css";
+import { Link } from 'react-router-dom'
 
 
 class Header extends Component {
@@ -15,8 +16,8 @@ class Header extends Component {
 render(){ 
    return(<header>
 	<div id="flex-header" className="container">
-			<div id="logo"><a href="index.html">
-					<p>Torque n Drag</p></a>
+			<div class="col col-4" id="logo"><Link to="/">
+					<img src="./images/logo.png"/></Link>
 			</div>
 		    
 			 <a href="javascript:void(0);" className="icon" onClick={this.myFunction}>
@@ -24,8 +25,8 @@ render(){
 			</a>
 			<nav className="topnav" id="myTopnav">
 				<ul> 
-					 <li className="link-class"><a href="account.html">Sign Up</a></li>
-					 <li className="link-class"><a href="login.html">Login</a></li>
+					 <li className="link-class"><Link to="/sign-up">Sign Up</Link></li>
+					 <li className="link-class"><Link to="/login">Login</Link></li>
 				</ul>
 			</nav>
 	    </div>

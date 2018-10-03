@@ -21,6 +21,10 @@ header {
     font-size: 30px;
 }
 
+img {
+    max-width: 100%;
+}
+
 nav {
     margin-left: auto;
 }
@@ -44,6 +48,10 @@ nav {
 
 .link-class a:active{
     color: #0074d9;
+}
+
+#taglineBlock {
+    text-align: left;
 }
 
 /* ---------------------------------Breakpoints --------------------------------- */
