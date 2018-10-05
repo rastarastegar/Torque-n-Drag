@@ -16,8 +16,12 @@ class Header extends Component {
 render(){ 
    return(<header>
 	<div id="flex-header" className="container">
-			<div class="col col-4" id="logo"><Link to="/">
+			<div class="col col-sm-6 col-4" id="logo"><Link to="/">
 					<img src="./images/logo.png"/></Link>
+			</div>
+
+			<div class="col col-6" id="mobile-logo"><Link to="/">
+					<img src="./images/logo-mobile.png"/></Link>
 			</div>
 		    
 			 <a href="javascript:void(0);" className="icon" onClick={this.myFunction}>

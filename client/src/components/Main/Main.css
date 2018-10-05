@@ -7,42 +7,48 @@
     margin-bottom: 40px;
 }
 
-.mobile-tagline {
+#tagline-block {
+    text-align: left;
+}
+
+.mobile-tagline, #mobile-buttons {
     display: none;
   }
 
-.space {
-    margin-bottom: 40px;
-}
-
-
- .btn-primary {
-    color: #002d68;
-    background-color: #d4d4d4e6;
+ .btn-log {
+    color: #505050;
+    background-color: rgba(211, 211, 211, 0.6);
     font-size: 20px;
-    width: 200px;
+    width: 190px;
     border: none;
     border-radius: 8px;
     margin-top: 30px;
     margin-right: 5px;
 }
 
-.btn-success {
-    color: #002d68;
-    background-color: #1ac528e6;
+.btn-sign {
+    color: #505050;
+    background-color: rgba(240, 154, 84, 0.8);
     font-size: 20px;
-    width: 200px;
+    width: 190px;
     border: none;
     border-radius: 8px;
     margin-top: 30px;
-    margin-left: 5px;
 }
 
-.btn-primary:hover {
-    color: #002d68;
+.btn-log:hover, .btn-log:active {
     border: none;
-    background-color: rgb(255, 238, 80, 0.8);
+    background-color: rgba(211, 211, 211, 0.9);;
 } 
+
+.btn-sign:hover, .btn-sign:active {
+    border: none;
+    background-color: rgba(240, 154, 84);
+}
+
+.btn:focus {
+    outline: none;
+    }
 
 h1 {
   color: #2e2727;
@@ -57,6 +63,9 @@ h1 {
     background-image: url(images/drilling-img-3-992.jpg);
     background-size: cover;
   }
+  
+
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -91,9 +100,18 @@ h1 {
     padding: 25px 0 0 17px;
 }
 
+#mobile-buttons {
+    display: block;
+}
+
 h1 {
-    font-size: 20px;
+    font-size: 22px;
     color: #fff;
   }
+
+h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
 
 }
