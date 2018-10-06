@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./WellMap.css";
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 
 class WellMap extends Component {
