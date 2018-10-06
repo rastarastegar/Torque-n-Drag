@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, {Component} from "react";
-=======
 
 import React, { Component } from "react";
->>>>>>> 3d65f51eb819cf547d4016bfd663448e9758a1a4
 import { BrowserRouter, Route } from 'react-router-dom'
 import Header from "./components/Header";
 import Main from "./components/Main";
