@@ -1,5 +1,5 @@
 
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route } from 'react-router-dom'
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -15,18 +15,18 @@ class App extends Component {
 
       <div>
         <BrowserRouter>
-         <div>
-           <Header/>
-           
-               <Route exact path="/" component={Main} />
-               <Route exact path="/login" component={Login} />
-               <Route exact path="/sign-up" component={Sign} />
-             
-            <Footer/>
+          <div>
+            <Header />
 
-           </div> 
-         </BrowserRouter>
-     </div>
+            <Route exact path="/" component={Main} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/sign-up" component={Sign} />
+
+            <Footer />
+
+          </div>
+        </BrowserRouter>
+      </div>
 
     );
   }

@@ -3,12 +3,17 @@
 # dependencies
 /node_modules
 
-
+/es
+/lib
 # testing
 /coverage
 
 # production
 /build
+
+/demo/dist
+
+/umd
 
 # misc
 .DS_Store
@@ -20,3 +25,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+*.tgz
+
+
+npm-debug.log*
