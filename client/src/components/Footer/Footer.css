@@ -10,12 +10,6 @@
     background-color: #212432;
 }
 
-p.h3 {
-    font-size: 20px;
-    font-weight: 800;
-    font-family: 'Hind', sans-serif;
-    color: #fff;
-}
 
 .h5 {
     color: #fff;
@@ -23,5 +17,5 @@ p.h3 {
 }
 
 .h6 {
-    text-align: center;
+      color: #fff;
 }

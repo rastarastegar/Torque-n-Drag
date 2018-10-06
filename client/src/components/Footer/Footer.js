@@ -8,15 +8,15 @@ const Footer = (props) => (
 				<div class="col col-6">
 					<ul class="list-reset">
 						<li>
-							<p class="h3 m0">
+							<p class="h5 m0">
 							   Contact
 							</p>
 						</li>
 						<li>
-							<a href="#" class="h5 block">something@something.com </a>
+							<a href="#" class="h6 block">something@something.com </a>
 						</li>
 						<li>
-							<a href="#" class="h5 block">(555) 555-555 </a>
+							<a href="#" class=" h6 block">(555) 555-555 </a>
 						</li>
 					</ul>
 				</div>

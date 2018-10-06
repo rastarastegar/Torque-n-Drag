@@ -29,8 +29,8 @@ render(){
 			</a>
 			<nav className="topnav" id="myTopnav">
 				<ul> 
-					 <li className="link-class"><Link to="/sign-up">Sign Up</Link></li>
-					 <li className="link-class"><Link to="/login">Login</Link></li>
+                     <Link className="link-class" to="/sign-up"><li>Sign Up</li></Link>
+					 <Link className="link-class" to="/login"><li>Login</li></Link>
 				</ul>
 			</nav>
 	    </div>

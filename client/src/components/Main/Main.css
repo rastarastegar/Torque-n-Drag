@@ -17,7 +17,7 @@
 
  .btn-log {
     color: #505050;
-    background-color: rgba(211, 211, 211, 0.6);
+    background-color: rgba(211, 211, 211, 0.8);
     font-size: 20px;
     width: 190px;
     border: none;
@@ -38,7 +38,7 @@
 
 .btn-log:hover, .btn-log:active {
     border: none;
-    background-color: rgba(211, 211, 211, 0.9);;
+    background-color: rgba(177, 177, 177, 0.9);;
 } 
 
 .btn-sign:hover, .btn-sign:active {
@@ -48,10 +48,10 @@
 
 .btn:focus {
     outline: none;
-    }
+ }
 
 h1 {
-  color: #2e2727;
+   color: #2e2727;
 }
 
 /* ---------------------------------Breakpoints --------------------------------- */
@@ -64,18 +64,15 @@ h1 {
     background-size: cover;
   }
   
-
-
 }
 
 @media only screen and (max-width: 768px) {
 .banner{
     background-image: url(images/drilling-img-3-768.jpg);
     background-size: cover;
-}
-
-    
-    }    
+  }
+   
+}    
 
 
 @media only screen and (max-width: 576px) {
@@ -102,6 +99,11 @@ h1 {
 
 #mobile-buttons {
     display: block;
+    margin-top: -6px;
+}
+
+.btn-log {
+    margin-bottom: -15px;
 }
 
 h1 {

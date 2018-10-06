@@ -6,9 +6,9 @@ class Sign extends Component {
         return(<div>
 
 
-    <section className="container px2">
-        <div className="mx-auto center">
-            <h1>Create Your Account</h1>
+    <section className="container mt-5">
+        <div className="mx-auto">
+            <h1 className="h1-log-sign">Create Your Account</h1>
             <br/> 
         
              <form action="">
@@ -33,7 +33,7 @@ class Sign extends Component {
                 <input type="text" className="mb2"  placeholder="Email" id="email" name="email" size="39" required />
                  <br/> <br/> 
 
-                 <input className="btn-primary" type="submit" />
+                 <input className="btn btn-sign" type="submit" />
                  
             </form>
             <br/> <br/> 
