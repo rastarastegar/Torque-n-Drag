@@ -19,6 +19,7 @@ This project will be to create a desktop app used to run torque and drag analysi
 * Access subscribed wishlist with capabilities to check items on list as purchased/completed
 * Extra features:
    * API for items to add to list ()
+    
    * Add comments to wishlist
    * Up 
 

@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+
+    "react-router-dom": "^4.3.1",
     "axios": "^0.18.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+<<<<<<< HEAD
     "react-file-reader": "^1.1.4",
     "react-scripts": "1.1.5",
     "react-upload-file": "^2.0.0-beta.6"
+=======
+
+    "react-scripts": "1.1.5"
+>>>>>>> aebc51ea6f51abf26913cef1a3c7aaf0907db3e5
   },
   "scripts": {
     "start": "react-scripts start",
