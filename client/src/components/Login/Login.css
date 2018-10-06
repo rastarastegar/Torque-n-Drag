@@ -5,3 +5,24 @@ section {
 .mb2 {
     max-width: 100%;
 }
+
+.btn-sign {
+    color: #505050;
+    background-color: rgba(240, 154, 84, 0.8);
+    font-size: 20px;
+    width: 190px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 576px) {
+.h1-log-sign {
+        color: #2e2727;
+        font-size: 26px;
+    }
+    
+.h4 {
+        font-size: 21px;
+    }
+}

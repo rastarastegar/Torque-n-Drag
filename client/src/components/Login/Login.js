@@ -6,9 +6,9 @@ class Login extends Component {
         return(<div>
 
 
-    <section className="container px2">
+    <section className="container mt-5">
         <div className="mx-auto center">
-            <h1>Create Your Account</h1>
+            <h1 class="h1-log-sign">Create Your Account</h1>
             <br/> 
         
              <form action="">
@@ -21,7 +21,7 @@ class Login extends Component {
                  <input className="mb2" type="password"  placeholder="Password" id="password" name="password" size="39" required />
                  <br/> <br/>      
 
-                 <input className="btn-primary" type="submit" />
+                 <input className="btn btn-sign" type="submit" />
                  
             </form>
             <br/> <br/> 
