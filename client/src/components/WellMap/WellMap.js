@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import "./Graph2D.css";
+import "./WellMap.css";
 import { Link } from 'react-router-dom'
 
 
-class Graph2D extends Component {
+class WellMap extends Component {
 render(){ 
     return(<div>
             words
@@ -11,5 +11,5 @@ render(){
         );
     }
 }
-    
-export default Graph2D;
+
+export default WellMap;
