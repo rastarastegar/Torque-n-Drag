@@ -2,12 +2,12 @@
 import * as firebase from 'firebase';
 
 var config = {
-    apiKey: "AIzaSyAJwFVfaH7Wl2lt61NgLRPwHqKoQ0ViIJA",
-    authDomain: "torq-n-drag.firebaseapp.com",
-    databaseURL: "https://torq-n-drag.firebaseio.com",
-    projectId: "torq-n-drag",
-    storageBucket: "torq-n-drag.appspot.com",
-    messagingSenderId: "288870094140"
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    databaseURL: process.env.databaseURL,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId
   };
 
 firebase.initializeApp(config);
