@@ -17,7 +17,7 @@ class CsvParse extends React.Component {
       },
       complete: function (results) {
         const data = results.data
-
+        console.log(results.data)
         // remove display headers
         data.shift()
 

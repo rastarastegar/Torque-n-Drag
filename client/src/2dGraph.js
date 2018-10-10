@@ -21,7 +21,7 @@ const Graph = () => (
 			e.dataSeries.visible = true;
 		}
 		this.chart.render();
-	}
+	}cd s
 	
 	function ($) {
 		const options = {
