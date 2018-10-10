@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "canvasjs": "^1.8.1",
     "expo": "^30.0.1",
     "expo-three": "^3.0.0-alpha.4",
     "papaparse": "^4.6.1",

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./Graph2D.css";
-
+import CanvasJS from "canvasjs";
 
 class Graph2D extends Component {
 
