@@ -19,12 +19,13 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "sequelize": "4.39.0",
-    "mysql": "2.16.0",
-    "react-file-reader":"1.1.4",
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "canvasjs": "^1.8.1",
     "express": "^4.15.4",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "mysql": "2.16.0",
+    "react-file-reader": "1.1.4",
+    "sequelize": "4.39.0"
   }
 }

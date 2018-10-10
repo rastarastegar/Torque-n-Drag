@@ -1,5 +1,9 @@
 import "./3.js";
 import "./vectors.js";
+import * from THREE AS 
+
+
+
 var mesh, renderer, scene, camera, controls;
 
 var nEnd = 0,
