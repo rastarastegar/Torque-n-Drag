@@ -9,9 +9,6 @@ import Login from "./components/Login";
 import Graph2D from  "./components/Graph2D";
 import WellMap from  "./components/WellMap"; 
 import "./App.css";
-{/*import Graph3D from  "./components/Graph3D";*/} 
-
-// import React from "react";
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
@@ -22,6 +19,10 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
 import LoadingPage from "./components/LoadingPage.js";
+
+{/*import Graph3D from  "./components/Graph3D";*/} 
+
+// import React from "react";
 
 
 class App extends Component {
