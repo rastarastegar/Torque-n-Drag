@@ -26,7 +26,7 @@ class Sign extends Component {
                 <br/> <br/>
 
                 <label className="h4" for="confirm-password">Confirm Password</label><br/> 
-                <input className="mb2" type="text"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
+                <input className="mb2" type="password"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
                 <br/> <br/>
 
                 <label className="h4" for="email">Email</label><br/> 
@@ -40,8 +40,6 @@ class Sign extends Component {
         </div>
     </section>
 
-
-   
 </div>
    );
 

@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Papa from 'papaparse'
-import { apply, compose, lift, splitAt, zipObj } from 'ramda'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Papa from 'papaparse';
+import { apply, compose, lift, splitAt, zipObj } from 'ramda';
 
 class CsvParse extends React.Component {
-  handleFile = event => {
+    handleFile = event => {
     const file = event.target.files[0]
     const keys = this.props.keys
     const onDataUploaded = this.props.onDataUploaded
@@ -17,7 +17,7 @@ class CsvParse extends React.Component {
       },
       complete: function (results) {
         const data = results.data
-
+        console.log(results.data)
         // remove display headers
         data.shift()
 
