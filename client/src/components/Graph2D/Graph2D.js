@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import CanvasJS from '../../canvasjs.min';
 import "./Graph2D.css";
 
 

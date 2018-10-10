@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 class Main extends Component {
     render(){ 
         return(<div>
-        <section class="banner">
+        <section className="banner">
         <div id="tagline-block" className="container pt-5">
 			<div className="col col-lg-6 col-md-8 pt-5">	
 				 <h1>Access your wells data. Anywhere. Anytime.

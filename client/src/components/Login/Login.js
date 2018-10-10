@@ -8,7 +8,7 @@ class Login extends Component {
 
             <section className="container mt-5">
                 <div className="mx-auto center">
-                    <h1 class="h1-log-sign">Create Your Account</h1>
+                    <h1 className="h1-log-sign">Create Your Account</h1>
                     <br />
 
                     <form action="">
