@@ -8,7 +8,6 @@
 //i have seen hell... it is made of unnecessarily repetitive code.
 //
 //dear reader... please learn from my mistake. just let go and press delete. just do it. you have the concept, just make the loops and do the thing. ez.
-//i could have used jsx. why didn't i? i just had to go with the origional plan huh?
 //
 //my brain evolved well past this solution about 2 minutes into writing it yet i still continued. why?
 //i just did the first thing that popped into my head. and then couldn't stop myself.
