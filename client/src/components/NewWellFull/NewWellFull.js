@@ -23,7 +23,7 @@
 //p.p.p.s
 // let satan = "i have seen hell... it is made of unnecessarily repetitive code.";
 // let angel = satan.split('')
-// for(let i=0;i<angel.length;i++){
+// for(let i=0;i<=angel.length;i++){
 // console.log(angel.join(''))
 // let x = angel.shift();
 // angel.push(x);
@@ -93,7 +93,7 @@
 // de.i have seen hell... it is made of unnecessarily repetitive co
 // e.i have seen hell... it is made of unnecessarily repetitive cod
 // .i have seen hell... it is made of unnecessarily repetitive code
-//
+// i have seen hell... it is made of unnecessarily repetitive code.
 //pppppppps... that felt good. i just needed to express that. 
 import React, {Component} from "react";
 import { Link } from 'react-router-dom';
