@@ -9,6 +9,7 @@ const INITIAL_STATE = {
     grade:'',
     normWeightDisabled:true,
     gradeDisabled:true,
+    canSubmit:true,
 }
 
 const byPropKey = (propertyName, value) => () => ({
@@ -51,6 +52,7 @@ const renderOptionsGrade = (state) => {
 
 const handleSubmit = (state,event) => {
     event.preventDefault();
+    console.log(JSON.stringify(state));
     alert(JSON.stringify(data[state.normSize][state.normWeight][state.grade],null,2))
 }
 
@@ -69,6 +71,7 @@ class NewWell extends Component {
             grade,
             normWeightDisabled,
             gradeDisabled,
+            canSubmit,
         } = this.state;
         return (
             <div>
@@ -76,22 +79,55 @@ class NewWell extends Component {
                 <form onSubmit={(event)=>{handleSubmit(this.state,event)}}>
 
                     <label for="normSize">|.....Norm Size.....|</label> <label for="normWeight">|.....Norm Weight.....|</label> <label for="grade">|.....grade.....|</label> <br />
-                    <select name="normSize" onChange={event => {this.setState(byPropKey('normSize',event.target.value));this.setState(byPropKey('normWeightDisabled',false));this.setState(byPropKey('gradeDisabled',true));}}>
+                    <select name="normSize" onChange={event => {if(event.target.value!="undecided")
+                    {this.setState(byPropKey('normSize',event.target.value));
+                    this.setState(byPropKey('normWeightDisabled',false));
+                    this.setState(byPropKey('gradeDisabled',true));
+                    this.setState(byPropKey('canSubmit',true));
+                    }else{this.setState(INITIAL_STATE);}}}>
                         <option value="undecided">choose a value</option>
                         <option value="4.5000">4.5000</option>
                         <option value="5.0000">5.0000</option>
                         <option value="5.5000">5.5000</option>
                     </select>
-                    <select name="normWeight" onChange={event => {this.setState(byPropKey('normWeight',event.target.value));this.setState(byPropKey('gradeDisabled',false));}}dangerouslySetInnerHTML={renderOptionsWeight(this.state)} disabled={normWeightDisabled}>
+                    <select name="normWeight" onChange={event => {if(event.target.value!="undecided")
+                    {this.setState(byPropKey('normWeight',event.target.value));
+                    this.setState(byPropKey('gradeDisabled',false));
+                    this.setState(byPropKey('canSubmit',true));
+                    }else{
+                        this.setState({
+                        normSize:normSize,
+                        normWeight:'',
+                        grade:'',
+                        normWeightDisabled:false,
+                        gradeDisabled:true,
+                        canSubmit:true,
+                    })}}}
+                     dangerouslySetInnerHTML={renderOptionsWeight(this.state)}
+                     disabled={normWeightDisabled}>
                         
                     </select>
 
-                    <select name="grade" onChange={event => {this.setState(byPropKey('grade',event.target.value));/*this.setState(byPropKey('normWeightDisabled',false));*/}} dangerouslySetInnerHTML={renderOptionsGrade(this.state)} disabled={gradeDisabled}>
+                    <select name="grade" onChange={event => {if(event.target.value!="undecided")
+                    {this.setState(byPropKey('grade',event.target.value));
+                    this.setState(byPropKey('canSubmit',false));
+                    }else{
+                        this.setState({
+                            normSize:normSize,
+                            normWeight:normWeight,
+                            grade:'',
+                            normWeightDisabled:false,
+                            gradeDisabled:false,
+                            canSubmit:true,
+                        })
+                    }}} 
+                    dangerouslySetInnerHTML={renderOptionsGrade(this.state)}
+                     disabled={gradeDisabled}>
 
                     </select>
                     <br />
 
-                    <input type="submit" value="submit"/>
+                    <input type="submit" value="submit" disabled={canSubmit} />
                 </form>
             </div>
         )
