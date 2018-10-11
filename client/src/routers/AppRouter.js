@@ -14,6 +14,7 @@ import Footer from "../components/Footer";
 import Sign from "../components/Sign";
 import Login from "../components/Login";
 
+
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -26,6 +27,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/dashboard" component={DashboardPage}/>
                 <Route component={NotFoundPage}/>
             </Switch>
+            <Footer />
         </div>
         
     </Router>

@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-redux'
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
@@ -63,7 +63,9 @@ const renderApp = () => {
 
 const jsx = (
     <Provider store={store}>
+        
         <AppRouter />
+        
     </Provider>
 );
 
