@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     // `firstName` is required and of type String
     firstName: {
         type: String,
-        required: true,
+        // required: true,
     },
 
     // `lastName` is not required and of type String
@@ -22,8 +22,8 @@ const UserSchema = new Schema({
     // `password` is required and of type String
     password: {
         type: String,
-        required: true,
-        unique: true
+        // required: true,
+        // unique: true
     },
 
     // `email` is not required and of type String

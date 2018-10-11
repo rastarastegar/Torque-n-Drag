@@ -66,9 +66,14 @@ module.exports = (env) => {
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
+            headers: { 
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+            },
             contentBase: path.join(__dirname, "public"),
             historyApiFallback: true,
             publicPath: '/dist/'
         }
     }
 }
+
