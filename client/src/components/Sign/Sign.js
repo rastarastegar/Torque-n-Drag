@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./Sign.css";
 import { auth } from '../../firebase';
 
@@ -15,13 +15,18 @@ const INITIAL_STATE = {
     [propertyName]: value,
   });
 
+
+  loadUsers = () => {
+    API.getUsers()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
+
 class Sign extends Component {
     constructor(props) {
         super(props);
         this.state = { ...INITIAL_STATE };
       }
-
-
 
     handleSubmit = (event)=>{
         event.preventDefault();
