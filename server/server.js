@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const routes = require("../routes/index");
 const cors = require('cors');
 // const port = process.env.PORT || 4000;
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
+console.log(PORT)
 const app = express();
 
 
@@ -29,12 +30,7 @@ const publicPath = path.join(__dirname, '../public');
 app.use(express.static(publicPath));
 app.use(cors());
 
-// allow-cors
-app.use(function(req,res,next){
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-})
+
 
 // app.get('*', (req, res) => {
 //     res.sendFile(path.join(publicPath, 'index.html'));
@@ -47,14 +43,12 @@ app.use(function(req,res,next){
 
 // Add routes, both API and view
 // Define API routes here
-app.get('/', (req,res) => {
-  return res.end('Api working');
-})
+app.use(routes);
+
 // catch 404
 app.use((req, res, next) => {
   res.status(404).send('<h2 align=center>Page Not Found!</h2>');
 });
-app.use(routes);
 
 
 // require("../routes/index")(app);
