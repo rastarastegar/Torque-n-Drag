@@ -1,10 +1,10 @@
-import "./3.js";
+//import "./3.js";
 import React, {Component} from "react";
 import "./Graph3D.css";
 //import { Link } from 'react-router-dom'
 import CsvParse from  "../UploadCSV"; 
 import "./tubular.js";
-import "./vectors.js";
+//import "./vectors.js";
 import * as THREE from "three";
 import ExpoTHREE from "expo-three";
 
