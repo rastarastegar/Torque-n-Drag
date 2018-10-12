@@ -1,0 +1,21 @@
+/* Footer.css */
+
+ footer {
+    height: 150px;
+    width: 100%;
+    padding-top: 38px;
+    position: absolute;
+    bottom:0;
+    top:100%;
+    background-color: #212432;
+}
+
+
+.h5 {
+    color: #fff;
+    font-family: 'Hind', sans-serif;
+}
+
+.h6 {
+      color: #fff;
+}
