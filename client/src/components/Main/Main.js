@@ -1,38 +1,11 @@
 import React, { Component } from "react";
 import "./Main.css";
 import { Link } from "react-router-dom";
-import API from "../../utils/API";
 
 class Main extends Component {
-  handleOnClick = event => {
-    event.preventDefault();
-    console.log("button pushed");
-    API.saveUser({
-      firstName: "R",
-      lastName: "S",
-      password: "T",
-      email: "U"
-    })
-      .then(res => console.log(res, "saved data"))
-      .catch(err => console.log(err));
-
-    //   API.getUsers()
-    //   .then(res =>
-    //     console.log(res)
-    //   )
-    //   .catch(err => console.log(err));
-  };
-
-  loadUsers = () => {
-    API.getUsers()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
-
   render() {
     return (
       <div>
-        <button onClick={this.handleOnClick}>ON CLICK TEST</button>
         <section className="banner">
           <div id="tagline-block" className="container pt-5">
             <div className="col col-lg-6 col-md-8 pt-5">
