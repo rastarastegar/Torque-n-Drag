@@ -2,8 +2,12 @@ import React, {Component} from "react";
 import { Link } from 'react-router-dom';
 import "./NewWellFull.css";
 import data from "../../fullDataSetUnformatted.json";
+import CsvParse from "../UploadCSV";
+
 
 const INITIAL_STATE = {
+    metaData:{wellName:'',wellWUID:'',wellLocation:'',Longitude:'',Latitude:'',quickNote:''},
+    surveyData:{},
     description:'',
     normSize:'',
     pipeId:'',
@@ -21,6 +25,11 @@ const INITIAL_STATE = {
     threadDisabled:true,
     canSubmit:true,
 }
+
+const byPropKey = (propertyName, value) => () => ({
+    [propertyName]: value,
+  });
+
 
 
     const renderOptions = (state,name) => {
@@ -148,7 +157,6 @@ const INITIAL_STATE = {
 
     const handleSubmit = (state,event) => {
         event.preventDefault();
-        
         alert(JSON.stringify(data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread],null,2))
     }
 
@@ -178,6 +186,8 @@ class NewWellFull extends Component {
             {
                 
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:value,
                     normSize:state.normSize,
                     pipeId:state.pipeId,
@@ -197,6 +207,8 @@ class NewWellFull extends Component {
                 });
             }else{
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:'',
                     normSize:'',
                     pipeId:'',
@@ -222,6 +234,8 @@ class NewWellFull extends Component {
             {
                 
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                         description:state.description,
                         normSize:value,
                         pipeId:state.pipeId,
@@ -241,6 +255,8 @@ class NewWellFull extends Component {
                     });
             }else{
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:state.description,
                     normSize:'',
                     pipeId:'',
@@ -266,6 +282,8 @@ class NewWellFull extends Component {
             {
                 
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:state.description,
                     normSize:state.normSize,
                     pipeId:value,
@@ -285,6 +303,8 @@ class NewWellFull extends Component {
                 })
             }else{
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:state.description,
                     normSize:state.normSize,
                     pipeId:'',
@@ -309,6 +329,8 @@ class NewWellFull extends Component {
                 if(value!="undecided")
         {
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -329,6 +351,8 @@ class NewWellFull extends Component {
             
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -354,6 +378,8 @@ class NewWellFull extends Component {
         {
             
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -373,6 +399,8 @@ class NewWellFull extends Component {
             });
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -398,6 +426,8 @@ class NewWellFull extends Component {
         {
             
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -417,6 +447,8 @@ class NewWellFull extends Component {
             })
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -441,7 +473,9 @@ class NewWellFull extends Component {
                 if(value!="undecided")
         {
             
-            this.setState({                    
+            this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,                    
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -460,6 +494,8 @@ class NewWellFull extends Component {
                 canSubmit:true,});
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -485,6 +521,8 @@ class NewWellFull extends Component {
         {
             
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -504,6 +542,8 @@ class NewWellFull extends Component {
             });
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -538,6 +578,8 @@ class NewWellFull extends Component {
 
     render(){
         const {
+            metaData,
+            surveyData,
             description,
             normSize,
             pipeId,
@@ -557,8 +599,33 @@ class NewWellFull extends Component {
         } = this.state;
         return (
             <div>
-                
+                <hr />
                 <form onSubmit={(event)=>{handleSubmit(this.state,event)}}>
+                    <table style={{"width":"100%"}}>
+                        <thead>
+                            <tr>
+                                <th>Well name</th>
+                                <th>Well WUID</th>                                
+                                <th>Well Location</th>                                
+                                <th>Longitude</th>
+                                <th>Latitude</th>
+                                <th>Quick Note</th>
+                                <th>Upload Survey Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td><input value={metaData.wellName} onChange={event => {let obj=metaData; metaData.wellName=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.wellWUID} onChange={event => {let obj=metaData; metaData.wellWUID=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.wellLocation} onChange={event => {let obj=metaData; metaData.wellLocation=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.Longitude} onChange={event => {let obj=metaData; metaData.Longitude=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.Latitude} onChange={event => {let obj=metaData; metaData.Latitude=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.quickNote} onChange={event => {let obj=metaData; metaData.quickNote=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td>{/*<CsvParse />*/}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br /> <br />
                     <table style={{"width":"100%"}}>
                         <thead>
                             <tr>{/*literally could have done all this with a for loop*/}
