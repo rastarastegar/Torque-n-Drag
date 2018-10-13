@@ -39,7 +39,7 @@ pipeData: {
     required: true,
 },
 // Comment description
-Comment: {
+comment: {
   type: String,
   required: true,
 },

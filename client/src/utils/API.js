@@ -17,4 +17,12 @@ export default {
   saveUser: function(userData) {
     return axios.post("/users", userData);
   }
+
+  // saveNewWell: function(wellData) {
+  //   return axios.post("/")
+  // }
+  // saveSurveyData: function(surveyData) {
+  //   return axios.post("")
+  // }
+
 };
