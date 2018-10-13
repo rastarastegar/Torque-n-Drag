@@ -41,6 +41,7 @@
     "moments": "^0.0.2",
     "mongoose": "^5.0.8",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.18.4",
     "normalize.css": "^8.0.0",
     "numeral": "^2.0.6",
     "raf": "^3.4.0",

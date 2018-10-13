@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Sign.css";
+import "../../utils/API";
 import { auth } from '../../firebase';
+import API from "../../utils/API";
 
 const INITIAL_STATE = {
     firstname: '',
@@ -16,11 +18,11 @@ const INITIAL_STATE = {
   });
 
 
-  loadUsers = () => {
-    API.getUsers()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
+  // loadUsers = () => {
+  //   API.getUsers()
+  //     .then(res => console.log(res))
+  //     .catch(err => console.log(err));
+  // };
 
 class Sign extends Component {
     constructor(props) {
@@ -42,6 +44,11 @@ class Sign extends Component {
               this.setState({ ...INITIAL_STATE });
                 alert('signed up and logged in... remember to delete this alert message')
               //add the returned whatever to 
+              API.saveUser({
+                firstname:firstname,
+                lastname:lastname,
+                email:email,
+              })
             })
             .catch(error => {
               this.setState(byPropKey('error', error));
