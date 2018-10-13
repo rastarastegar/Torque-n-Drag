@@ -52,15 +52,19 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     create: function(req, res) {
-      db.Well.create(req.body)
+      db.Well.create(req.body.wellData)
       .then(function(dbWell){
           db.User.findOneAndUpdate(
             {
-              _id: req.body.userId
+              uid: req.body.userId
             },{
               $push: {well: dbWell._id}
             },{new:true}
           )
+          console.log("uid", req.body.userId)
+          console.log("dbWell",dbWell)
+          console.log("dbWell id",dbWell._id)
+
         }
       )
         .then(dbModel => res.json(dbModel))

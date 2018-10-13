@@ -9,39 +9,39 @@ const WellSchema = new Schema({
   // Lat
   latitude: {
     type: Number,
-    required: true,
+    // required: true,
 },
 
   // Long
   longitude: {
     type: Number,
-    required: true,
+    // required: true,
 },
   // Well Name
   wellName: {
     type: String,
-    required: true,
+    // required: true,
 },
   // Well Name
   wellUWI: {
     type: Number,
-    required: true,
+    // required: true,
 },
 
   // Location description
 wellLocation: {
     type: String,
-    required: true,
+    // required: true,
 },
 // pipeData
 pipeData: {
-    type: Array,
-    required: true,
+    type: Object,
+    // required: true,
 },
 // Comment description
-Comment: {
+comment: {
   type: String,
-  required: true,
+  // required: true,
 },
 
 

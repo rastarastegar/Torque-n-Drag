@@ -6,8 +6,8 @@ export default {
     return axios.get("/users/" + id);
   },
 
-  saveWell: function(id_wellData) {
-    axios.post("/wells",id_wellData)
+  saveWell: function(wellData) {
+    axios.post("/wells",wellData)
   },
   // // Gets the book with the given id
   getUser: function(id) {
@@ -21,4 +21,12 @@ export default {
   saveUser: function(userData) {
     return axios.post("/users", userData);
   }
+
+  // saveNewWell: function(wellData) {
+  //   return axios.post("/")
+  // }
+  // saveSurveyData: function(surveyData) {
+  //   return axios.post("")
+  // }
+
 };

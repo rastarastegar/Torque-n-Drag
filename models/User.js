@@ -26,6 +26,11 @@ const UserSchema = new Schema({
         required: false
     },
 
+    uid:{
+        type: String,
+        required: false
+    },
+
     // `well` is an object that stores a Well id
     // The ref property links the ObjectId to the Well model
     // This allows us to populate the User with an associated Well

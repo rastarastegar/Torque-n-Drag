@@ -44,10 +44,12 @@ class Sign extends Component {
               this.setState({ ...INITIAL_STATE });
                 //alert('signed up and logged in... remember to delete this alert message')
               //add the returned whatever to 
+              alert(JSON.stringify(authUser.user.uid));
               API.saveUser({
                 firstName:firstname,
                 lastName:lastname,
                 email:email,
+                uid:authUser.user.uid,
               })
             })
             .catch(error => {

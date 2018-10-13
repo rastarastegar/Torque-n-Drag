@@ -3,8 +3,8 @@ const dbController = require("../controllers/dbController");
 
 // Matches with "/users"
 router.route("/")
-  .get(dbController.well.findAll)
-  .post(dbController.well.create)
+  .get(dbController.survey.findAll)
+  .post(dbController.survey.create)
   
 
 // Matches with "/api/books/:id"
