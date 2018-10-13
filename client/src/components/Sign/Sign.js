@@ -15,13 +15,6 @@ const INITIAL_STATE = {
     [propertyName]: value,
   });
 
-
-  loadUsers = () => {
-    API.getUsers()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
-
 class Sign extends Component {
     constructor(props) {
         super(props);
