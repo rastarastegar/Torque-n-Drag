@@ -3,7 +3,7 @@ const dbController = require("../controllers/dbController");
 
 // Matches with "/users"
 router.route("/")
-  .get(dbController.user.findAll)
+  .get(dbController.findAllByUser)
   .post(dbController.user.create)
   
 

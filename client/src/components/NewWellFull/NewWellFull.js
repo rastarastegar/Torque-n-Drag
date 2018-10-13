@@ -169,6 +169,7 @@ const byPropKey = (propertyName, value) => () => ({
             wellName:state.metaData.wellName,
             wellUWI:state.metaData.wellWUID,
             wellLocation:state.metaData.wellLocation,
+            surveyData: surveyData,
             pipeData:temp,
             comment:state.metaData.comment
         }
@@ -177,9 +178,13 @@ const byPropKey = (propertyName, value) => () => ({
             userId: uid,
             wellData: wellObj
         })
-        //if pass to database succeeds .then pass to store
+
         
 
+        
+        //if pass to database succeeds .then pass to store
+
+        
 
         alert(JSON.stringify(data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread],null,2))
     }

@@ -3,8 +3,8 @@ const db = require("../models");
 // Defining methods for the db Controller
 module.exports = {
   findAllByUser: function(req, res) {
-    db.User.findById(req.params.id)
-      .populate("well survey")
+    db.User.findById(req.params.userId)
+      .populate("well")
       // .sort({ lastName: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -52,21 +52,19 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     create: function(req, res) {
+      console.log(req.body.wellData);
       db.Well.create(req.body.wellData)
-      .then(function(dbWell){
-          db.User.findOneAndUpdate(
+        .then(function(dbWell) {
+          return db.User.findOneAndUpdate(
             {
               uid: req.body.userId
-            },{
-              $push: {well: dbWell._id}
-            },{new:true}
-          )
-          console.log("uid", req.body.userId)
-          console.log("dbWell",dbWell)
-          console.log("dbWell id",dbWell._id)
-
-        }
-      )
+            },
+            {
+              $push: { well: dbWell._id }
+            },
+            { new: true }
+          );
+        })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
