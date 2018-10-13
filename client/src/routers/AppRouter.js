@@ -17,6 +17,7 @@ import Account from "../components/Account";
 import MyWells from "../components/MyWells";
 import NewWell from "../components/NewWell";
 import NewWellFull from "../components/NewWellFull";
+import csvParse from "../components/UploadCSV";
 
 export const history = createHistory();
 
@@ -32,6 +33,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/my-wells" component={MyWells}/>
                 <PrivateRoute path="/account" component={Account}/>
                 <PrivateRoute path="/new-well" component={NewWellFull}/>
+                <PrivateRoute path="/uploadcsv" component={csvParse}/>
                 <Route component={NotFoundPage}/>
             </Switch>
             <Footer />

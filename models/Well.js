@@ -33,7 +33,11 @@ wellLocation: {
     type: String,
     required: true,
 },
-
+// pipeData
+pipeData: {
+    type: Array,
+    required: true,
+},
 // Comment description
 Comment: {
   type: String,

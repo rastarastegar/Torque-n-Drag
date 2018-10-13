@@ -1,105 +1,13 @@
-//i have seen hell... it is made of unnecessarily repetitive code.
-//
-//this code is a tragedy... the entire time spent writing this
-//was spent thinking about how i could do the same thing with significantly less code. however i had already
-//committed and was too far in to let go.
-//arrays and loops are your friend.
-//
-//i have seen hell... it is made of unnecessarily repetitive code.
-//
-//dear reader... please learn from my mistake. just let go and press delete. just do it. you have the concept, just make the loops and do the thing. ez.
-//
-//my brain evolved well past this solution about 2 minutes into writing it yet i still continued. why?
-//i just did the first thing that popped into my head. and then couldn't stop myself.
-//why continue down this terrible path?
-//COMITTED!!!1!1
-//i have seen hell... it is made of unnecessarily repetitive code.
-//lesson to the reader: don't commit to something that you know deep down is truly terrible
-//
-//~yours truly -nitsuA~
-//p.s. i've been up for a solid 24 hours.
-//p.p.s. my mind feels numb... i have to express this tragedy. thank you for witnessing my meltdown
-//p.p.p.s
-// let satan = "i have seen hell... it is made of unnecessarily repetitive code.";
-// let angel = satan.split('')
-// for(let i=0;i<=angel.length;i++){
-// console.log(angel.join(''))
-// let x = angel.shift();
-// angel.push(x);
-// }
-//or
-// i have seen hell... it is made of unnecessarily repetitive code.
-//  have seen hell... it is made of unnecessarily repetitive code.i
-// have seen hell... it is made of unnecessarily repetitive code.i
-// ave seen hell... it is made of unnecessarily repetitive code.i h
-// ve seen hell... it is made of unnecessarily repetitive code.i ha
-// e seen hell... it is made of unnecessarily repetitive code.i hav
-//  seen hell... it is made of unnecessarily repetitive code.i have
-// seen hell... it is made of unnecessarily repetitive code.i have
-// een hell... it is made of unnecessarily repetitive code.i have s
-// en hell... it is made of unnecessarily repetitive code.i have se
-// n hell... it is made of unnecessarily repetitive code.i have see
-//  hell... it is made of unnecessarily repetitive code.i have seen
-// hell... it is made of unnecessarily repetitive code.i have seen
-// ell... it is made of unnecessarily repetitive code.i have seen h
-// ll... it is made of unnecessarily repetitive code.i have seen he
-// l... it is made of unnecessarily repetitive code.i have seen hel
-// ... it is made of unnecessarily repetitive code.i have seen hell
-// .. it is made of unnecessarily repetitive code.i have seen hell.
-// . it is made of unnecessarily repetitive code.i have seen hell..
-//  it is made of unnecessarily repetitive code.i have seen hell...
-// it is made of unnecessarily repetitive code.i have seen hell...
-// t is made of unnecessarily repetitive code.i have seen hell... i
-//  is made of unnecessarily repetitive code.i have seen hell... it
-// is made of unnecessarily repetitive code.i have seen hell... it
-// s made of unnecessarily repetitive code.i have seen hell... it i
-//  made of unnecessarily repetitive code.i have seen hell... it is
-// made of unnecessarily repetitive code.i have seen hell... it is
-// ade of unnecessarily repetitive code.i have seen hell... it is m
-// de of unnecessarily repetitive code.i have seen hell... it is ma
-// e of unnecessarily repetitive code.i have seen hell... it is mad
-//  of unnecessarily repetitive code.i have seen hell... it is made
-// of unnecessarily repetitive code.i have seen hell... it is made
-// f unnecessarily repetitive code.i have seen hell... it is made o
-//  unnecessarily repetitive code.i have seen hell... it is made of
-// unnecessarily repetitive code.i have seen hell... it is made of
-// nnecessarily repetitive code.i have seen hell... it is made of u
-// necessarily repetitive code.i have seen hell... it is made of un
-// ecessarily repetitive code.i have seen hell... it is made of unn
-// cessarily repetitive code.i have seen hell... it is made of unne
-// essarily repetitive code.i have seen hell... it is made of unnec
-// ssarily repetitive code.i have seen hell... it is made of unnece
-// sarily repetitive code.i have seen hell... it is made of unneces
-// arily repetitive code.i have seen hell... it is made of unnecess
-// rily repetitive code.i have seen hell... it is made of unnecessa
-// ily repetitive code.i have seen hell... it is made of unnecessar
-// ly repetitive code.i have seen hell... it is made of unnecessari
-// y repetitive code.i have seen hell... it is made of unnecessaril
-//  repetitive code.i have seen hell... it is made of unnecessarily
-// repetitive code.i have seen hell... it is made of unnecessarily
-// epetitive code.i have seen hell... it is made of unnecessarily r
-// petitive code.i have seen hell... it is made of unnecessarily re
-// etitive code.i have seen hell... it is made of unnecessarily rep
-// titive code.i have seen hell... it is made of unnecessarily repe
-// itive code.i have seen hell... it is made of unnecessarily repet
-// tive code.i have seen hell... it is made of unnecessarily repeti
-// ive code.i have seen hell... it is made of unnecessarily repetit
-// ve code.i have seen hell... it is made of unnecessarily repetiti
-// e code.i have seen hell... it is made of unnecessarily repetitiv
-//  code.i have seen hell... it is made of unnecessarily repetitive
-// code.i have seen hell... it is made of unnecessarily repetitive
-// ode.i have seen hell... it is made of unnecessarily repetitive c
-// de.i have seen hell... it is made of unnecessarily repetitive co
-// e.i have seen hell... it is made of unnecessarily repetitive cod
-// .i have seen hell... it is made of unnecessarily repetitive code
-// i have seen hell... it is made of unnecessarily repetitive code.
-//pppppppps... that felt good. i just needed to express that. 
 import React, {Component} from "react";
 import { Link } from 'react-router-dom';
 import "./NewWellFull.css";
 import data from "../../fullDataSetUnformatted.json";
+import CsvParse from "../UploadCSV";
+
 
 const INITIAL_STATE = {
+    metaData:{wellName:'',wellWUID:'',wellLocation:'',Longitude:'',Latitude:'',quickNote:''},
+    surveyData:{},
     description:'',
     normSize:'',
     pipeId:'',
@@ -117,6 +25,11 @@ const INITIAL_STATE = {
     threadDisabled:true,
     canSubmit:true,
 }
+
+const byPropKey = (propertyName, value) => () => ({
+    [propertyName]: value,
+  });
+
 
 
     const renderOptions = (state,name) => {
@@ -244,7 +157,6 @@ const INITIAL_STATE = {
 
     const handleSubmit = (state,event) => {
         event.preventDefault();
-        console.log(JSON.stringify(state));
         alert(JSON.stringify(data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread],null,2))
     }
 
@@ -274,6 +186,8 @@ class NewWellFull extends Component {
             {
                 
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:value,
                     normSize:state.normSize,
                     pipeId:state.pipeId,
@@ -293,6 +207,8 @@ class NewWellFull extends Component {
                 });
             }else{
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:'',
                     normSize:'',
                     pipeId:'',
@@ -318,6 +234,8 @@ class NewWellFull extends Component {
             {
                 
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                         description:state.description,
                         normSize:value,
                         pipeId:state.pipeId,
@@ -337,6 +255,8 @@ class NewWellFull extends Component {
                     });
             }else{
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:state.description,
                     normSize:'',
                     pipeId:'',
@@ -362,6 +282,8 @@ class NewWellFull extends Component {
             {
                 
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:state.description,
                     normSize:state.normSize,
                     pipeId:value,
@@ -381,6 +303,8 @@ class NewWellFull extends Component {
                 })
             }else{
                 this.setState({
+                    metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                    surveyData:state.surveyData,
                     description:state.description,
                     normSize:state.normSize,
                     pipeId:'',
@@ -405,6 +329,8 @@ class NewWellFull extends Component {
                 if(value!="undecided")
         {
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -425,6 +351,8 @@ class NewWellFull extends Component {
             
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -450,6 +378,8 @@ class NewWellFull extends Component {
         {
             
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -469,6 +399,8 @@ class NewWellFull extends Component {
             });
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -494,6 +426,8 @@ class NewWellFull extends Component {
         {
             
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -513,6 +447,8 @@ class NewWellFull extends Component {
             })
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -537,7 +473,9 @@ class NewWellFull extends Component {
                 if(value!="undecided")
         {
             
-            this.setState({                    
+            this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,                    
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -556,6 +494,8 @@ class NewWellFull extends Component {
                 canSubmit:true,});
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -581,6 +521,8 @@ class NewWellFull extends Component {
         {
             
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -600,6 +542,8 @@ class NewWellFull extends Component {
             });
         }else{
             this.setState({
+                metaData:{wellName:state.metaData.wellName,wellWUID:state.metaData.wellWUID,wellLocation:state.metaData.wellLocation,Longitude:state.metaData.Longitude,Latitude:state.metaData.Latitude,quickNote:state.metaData.quickNote},
+                surveyData:state.surveyData,
                 description:state.description,
                 normSize:state.normSize,
                 pipeId:state.pipeId,
@@ -634,6 +578,8 @@ class NewWellFull extends Component {
 
     render(){
         const {
+            metaData,
+            surveyData,
             description,
             normSize,
             pipeId,
@@ -653,8 +599,33 @@ class NewWellFull extends Component {
         } = this.state;
         return (
             <div>
-                
+                <hr />
                 <form onSubmit={(event)=>{handleSubmit(this.state,event)}}>
+                    <table style={{"width":"100%"}}>
+                        <thead>
+                            <tr>
+                                <th>Well name</th>
+                                <th>Well WUID</th>                                
+                                <th>Well Location</th>                                
+                                <th>Longitude</th>
+                                <th>Latitude</th>
+                                <th>Quick Note</th>
+                                <th>Upload Survey Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td><input value={metaData.wellName} onChange={event => {let obj=metaData; metaData.wellName=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.wellWUID} onChange={event => {let obj=metaData; metaData.wellWUID=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.wellLocation} onChange={event => {let obj=metaData; metaData.wellLocation=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.Longitude} onChange={event => {let obj=metaData; metaData.Longitude=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.Latitude} onChange={event => {let obj=metaData; metaData.Latitude=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.quickNote} onChange={event => {let obj=metaData; metaData.quickNote=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td>{/*<CsvParse />*/}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br /> <br />
                     <table style={{"width":"100%"}}>
                         <thead>
                             <tr>{/*literally could have done all this with a for loop*/}
