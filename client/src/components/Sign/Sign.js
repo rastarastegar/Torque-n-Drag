@@ -42,17 +42,17 @@ class Sign extends Component {
           auth.doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
               this.setState({ ...INITIAL_STATE });
-                alert('signed up and logged in... remember to delete this alert message')
+                //alert('signed up and logged in... remember to delete this alert message')
               //add the returned whatever to 
               API.saveUser({
-                firstname:firstname,
-                lastname:lastname,
+                firstName:firstname,
+                lastName:lastname,
                 email:email,
               })
             })
             .catch(error => {
               this.setState(byPropKey('error', error));
-              alert('there was an error')
+              alert(error)
             });
         
         return false;
