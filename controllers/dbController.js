@@ -41,28 +41,38 @@ module.exports = {
   },
   well: {
     findAll: function(req, res) {
-      db.User.find(req.query)
+      db.Well.find(req.query)
         .sort({ wellName: -1 })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {
-      db.User.findById(req.params.id)
+      db.Well.findById(req.params.id)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     create: function(req, res) {
-      db.User.create(req.body)
+      db.Well.create(req.body)
+      .then(function(dbWell){
+          db.User.findOneAndUpdate(
+            {
+              _id: req.body.userId
+            },{
+              $push: {well: dbWell._id}
+            },{new:true}
+          )
+        }
+      )
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     update: function(req, res) {
-      db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
+      db.Well.findOneAndUpdate({ _id: req.params.id }, req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     remove: function(req, res) {
-      db.User.findById({ _id: req.params.id })
+      db.Well.findById({ _id: req.params.id })
         .then(dbModel => dbModel.remove())
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
@@ -70,28 +80,28 @@ module.exports = {
   },
   survey: {
     findAll: function(req, res) {
-      db.User.find(req.query)
+      db.Survey.find(req.query)
         .sort({ _id: -1 })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {
-      db.User.findById(req.params.id)
+      db.Survey.findById(req.params.id)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     create: function(req, res) {
-      db.User.create(req.body)
+      db.Survey.create(req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     update: function(req, res) {
-      db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
+      db.Survey.findOneAndUpdate({ _id: req.params.id }, req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
     remove: function(req, res) {
-      db.User.findById({ _id: req.params.id })
+      db.Survey.findById({ _id: req.params.id })
         .then(dbModel => dbModel.remove())
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));

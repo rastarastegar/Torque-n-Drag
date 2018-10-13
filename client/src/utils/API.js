@@ -2,13 +2,17 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getUsers: function() {
-    return axios.get("/users");
+  getUser: function(id) {
+    return axios.get("/users/" + id);
+  },
+
+  saveWell: function(id_wellData) {
+    axios.post("/wells",id_wellData)
   },
   // // Gets the book with the given id
-  // getUsers: function(id) {
-  //   return axios.get("/api/books/" + id);
-  // },
+  getUser: function(id) {
+    return axios.get("/users/" + id);
+  },
   // // Deletes the book with the given id
   // deleteBook: function(id) {
   //   return axios.delete("/api/books/" + id);

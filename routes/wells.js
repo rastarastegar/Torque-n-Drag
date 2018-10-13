@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const dbController = require("../controllers/dbController");
 
-// Matches with "/users"
+// Matches with "/wells"
 router.route("/")
-  .get(dbController.user.findAll)
-  .post(dbController.user.create)
+//   .get(dbController.well.findAll)
+  .post(dbController.well.create)
   
 
 // Matches with "/api/books/:id"
@@ -14,4 +14,3 @@ router.route("/")
 //   .delete(booksController.remove);
 
 module.exports = router;
-
