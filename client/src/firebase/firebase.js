@@ -1,5 +1,9 @@
  // Initialize Firebase
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+
 
 // for Development, need to create a local .env.development file within the 'client' master folder
 // add details that were Slacked out
