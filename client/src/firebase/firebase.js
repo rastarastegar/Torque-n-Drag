@@ -1,7 +1,7 @@
  // Initialize Firebase
 // import * as firebase from 'firebase';
 import firebase from 'firebase/app';
-// import 'firebase/auth';
+import 'firebase/auth';
 import 'firebase/database';
 
 ////not sure this is updating on heroku
