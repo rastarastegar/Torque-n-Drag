@@ -108,5 +108,19 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }
+  },
+  userAndWells: {
+    findByUid: function(req,res){
+      //console.log(JSON.stringify(req.body.uid)+"you hit the right one at least")
+      db.User.findOne({'uid':req.body.uid},function(error,dbuser){
+        let userData=dbuser;
+        db.Well.find({
+          '_id': { $in: userData.well}
+      }, function(err, docs){
+           res.json({userData:userData,wellData:docs})
+      });
+      })
+
+    }
   }
 };

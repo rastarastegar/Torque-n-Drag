@@ -17,8 +17,11 @@ export default {
   // Saves a book to the database
   saveUser: function(userData) {
     return axios.post("/users", userData);
-  }
+  },
 
+  getUserAndWells: function(uid){
+    return axios.post("/api/userandwells",uid);
+  }
   // saveNewWell: function(wellData) {
   //   return axios.post("/")
   // }

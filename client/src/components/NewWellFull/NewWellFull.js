@@ -1,12 +1,14 @@
 import React, {Component} from "react";
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+import { Router } from 'react-router';
 import "./NewWellFull.css";
-import data from "../../fullDataSetUnformatted.json";
+//import data from "../../fullDataSetUnformatted.json";
 import CsvParse from "../UploadCSV"; 
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth.js'
 import API from "../../utils/API";
 
+const data = JSON.parse(localStorage.getItem('pipeJSON'));
 
 const INITIAL_STATE = {
     metaData:{wellName:'',wellWUID:'',wellLocation:'',Longitude:'',Latitude:'',quickNote:''},
@@ -158,7 +160,22 @@ const byPropKey = (propertyName, value) => () => ({
 
 //note for later, change uid to email
 
-    const handleSubmit = (state,event,uid) => {
+
+
+
+class NewWellFull extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { ...INITIAL_STATE };
+      }
+
+    
+      peaceOutSquirrelScout() {
+        this.props.history.push('/my-wells');
+        
+      }
+    
+handleSubmit = (state,event,uid) => {
         event.preventDefault();
         let surveyData=state.surveyData
         let temp = data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread]
@@ -180,26 +197,18 @@ const byPropKey = (propertyName, value) => () => ({
             wellData: wellObj
 
         }).then(response=>{
-            alert(JSON.stringify(response));
+            //get data and save to session storage.then() redirect to mywells else throw an error
+            API.getUserAndWells({uid:uid}).then(response=>
+            {sessionStorage.setItem("userData",JSON.stringify(response.data.userData));
+            sessionStorage.setItem('wellData',JSON.stringify(response.data.wellData));
+            //redirect now
+                this.peaceOutSquirrelScout();
+            })
+            
+            
         })
 
-        
-
-        
-        //if pass to database succeeds .then pass to store
-
-        
-
-        //alert(JSON.stringify(data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread],null,2))
     }
-
-
-class NewWellFull extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { ...INITIAL_STATE };
-      }
-
 
       handleData = data => {
         this.setState(byPropKey('surveyData',data))
@@ -656,7 +665,7 @@ class NewWellFull extends Component {
         return (
             <div>
                 <hr />
-                <form onSubmit={(event)=>{handleSubmit(this.state,event,this.props.uid)}}>
+                <form onSubmit={(event)=>{this.handleSubmit(this.state,event,this.props.uid)}}>
                     <table style={{"width":"100%"}}>
                         <thead>
                             <tr>
