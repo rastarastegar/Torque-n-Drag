@@ -11,6 +11,10 @@
     text-align: left;
 }
 
+.tag-Text {
+    color: rgba(211, 211, 211, 0.8);
+}
+
 .mobile-tagline, #mobile-buttons {
     display: none;
   }

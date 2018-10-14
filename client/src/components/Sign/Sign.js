@@ -75,27 +75,32 @@ class Sign extends Component {
         
              <form onSubmit={this.handleSubmit} >
                 
-                <label className="h4" for="first-name">First Name</label><br/> 
+                <div className="first-name"><label className="h4" for="first-name">First Name</label><br/> 
                 <input value={firstname} onChange={event => this.setState(byPropKey('firstname',event.target.value))} className="mb2" type="text"  placeholder="John" id="first-name" name="first-name" size="39" required autofocus />
-                <br/> <br/> 
+                </div>
+                <br/> 
 
-                <label className="h4" for="last-name">Last Name</label><br/> 
+                <div className="last-name"><label className="h4" for="last-name">Last Name</label><br/> 
                 <input value={lastname} onChange={event => this.setState(byPropKey('lastname', event.target.value))} className="mb2" type="text"  placeholder="Dane" id="last-name" name="last-name" size="39" required />
-                <br/> <br/>
+                </div>
+                <br/>
 
-                 <label className="h4" for="password">Password</label><br/> 
+                 <div className="password"><label className="h4" for="password">Password</label><br/> 
                  <input value={passwordOne} onChange={event => this.setState(byPropKey('passwordOne',event.target.value))} className="mb2" type="password"  placeholder="Password" id="password" name="password" size="39" required />
-                <br/> <br/>
+                 </div>
+                <br/>
 
-                <label className="h4" for="confirm-password">Confirm Password</label><br/> 
+                <div className="confirm-password"><label className="h4" for="confirm-password">Confirm Password</label><br/> 
                 <input value={passwordTwo} onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} className="mb2" type="text"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
-                <br/> <br/>
+                </div>
+                <br/>
 
-                <label className="h4" for="email">Email</label><br/> 
+                <div className="email"><label className="h4" for="email">Email</label><br/> 
                 <input value={email} onChange={event => this.setState(byPropKey('email', event.target.value))} type="text" className="mb2"  placeholder="Email" id="email" name="email" size="39" required />
-                 <br/> <br/> 
+                </div>
+                 <br/> 
 
-                 <input disabled={isInvalid} className="btn-primary" type="submit" />
+                 <div className="submit"><input disabled={isInvalid} className="btn-primary" type="submit" /></div>  
 
                  { error && <p>{error.message}</p> }
                  

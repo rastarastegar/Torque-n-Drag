@@ -29,6 +29,7 @@ class Header extends Component {
 				</a>
 				<nav className="topnav" id="myTopnav">
 					<ul>
+						<Link className="link-class" to=""><li>Investors</li></Link>
 						<Link className="link-class" to="/sign-up"><li>Sign Up</li></Link>
 						<Link className="link-class" to="/login"><li>Login</li></Link>
 					</ul>
