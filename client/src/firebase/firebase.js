@@ -4,6 +4,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
+//not sure this is updating on heroku
+
 
 // for Development, need to create a local .env.development file within the 'client' master folder
 // add details that were Slacked out
