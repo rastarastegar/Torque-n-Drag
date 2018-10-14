@@ -126,7 +126,7 @@ module.exports = {
           res.json({userData:userData,wellData:[{wellName:'no data'}]})
         }
 
-      })
+      }).catch(err=> res.status(422).json(err));
 
     }
   }
