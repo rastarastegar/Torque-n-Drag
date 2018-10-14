@@ -7,7 +7,7 @@ export default {
   },
 
   saveWell: function(wellData) {
-    axios.post("/wells",wellData)
+    return axios.post("/wells",wellData)
   },
 
   // // Deletes the book with the given id

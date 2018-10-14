@@ -52,10 +52,10 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     create: function(req, res) {
-      console.log(req.body.wellData);
+      console.log(JSON.stringify(req.body.wellData));
       db.Well.create(req.body.wellData)
         .then(function(dbWell) {
-          return db.User.findOneAndUpdate(
+         return db.User.findOneAndUpdate(
             {
               uid: req.body.userId
             },
@@ -66,7 +66,7 @@ module.exports = {
           );
         })
         .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+        .catch(err => {res.status(422).json(err);console.log(err)});
     },
     update: function(req, res) {
       db.Well.findOneAndUpdate({ _id: req.params.id }, req.body)

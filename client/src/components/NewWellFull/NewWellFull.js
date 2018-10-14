@@ -156,7 +156,7 @@ const byPropKey = (propertyName, value) => () => ({
 
     
 
-
+//note for later, change uid to email
 
     const handleSubmit = (state,event,uid) => {
         event.preventDefault();
@@ -169,14 +169,18 @@ const byPropKey = (propertyName, value) => () => ({
             wellName:state.metaData.wellName,
             wellUWI:state.metaData.wellWUID,
             wellLocation:state.metaData.wellLocation,
-            surveyData: surveyData,
             pipeData:temp,
+            surveyData:surveyData,
             comment:state.metaData.comment
         }
+
         //pass to database
         API.saveWell({
             userId: uid,
             wellData: wellObj
+
+        }).then(response=>{
+            alert(JSON.stringify(response));
         })
 
         
@@ -186,7 +190,7 @@ const byPropKey = (propertyName, value) => () => ({
 
         
 
-        alert(JSON.stringify(data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread],null,2))
+        //alert(JSON.stringify(data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread],null,2))
     }
 
 
@@ -636,8 +640,8 @@ class NewWellFull extends Component {
 
         const keys = [
             'Depth (ft)',
-            'Incl. (Deg.)',
-            'Azim. (Deg.)',
+            'Incl (Deg)',
+            'Azim (Deg)',
             'XXXX',
             'XXXX',
             'XXXX',
@@ -773,10 +777,10 @@ const mapStateToProps = (state, props) => ({
     uid: state.auth.uid
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    //pass in well data here
+// const mapDispatchToProps = (dispatch) => ({
+//     //pass in well data here
     
 
-});
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewWellFull);
+export default connect(mapStateToProps, undefined)(NewWellFull);
