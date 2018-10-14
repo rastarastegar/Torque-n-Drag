@@ -55,3 +55,24 @@ export const wrapper = (options) => (WrappedComponent) => {
         })
       });
     }
+
+    render() {
+      const props = Object.assign({}, this.props, {
+        loaded: this.state.loaded,
+        map: this.state.map,
+        google: this.state.google,
+        mapComponent: this.refs.map
+      })
+      return (
+        <div>
+          <WrappedComponent {...props} />
+          <div ref='map' />
+        </div>
+      )
+    }
+  }
+
+  return Wrapper;
+}
+
+export default wrapper;
