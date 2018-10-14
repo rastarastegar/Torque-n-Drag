@@ -114,11 +114,18 @@ module.exports = {
       //console.log(JSON.stringify(req.body.uid)+"you hit the right one at least")
       db.User.findOne({'uid':req.body.uid},function(error,dbuser){
         let userData=dbuser;
-        db.Well.find({
+        console.log(dbuser)
+        if(userData.well.length>0)
+        {
+                  db.Well.find({
           '_id': { $in: userData.well}
       }, function(err, docs){
            res.json({userData:userData,wellData:docs})
       });
+        }else{
+          res.json({userData:userData,wellData:[{wellName:'no data'}]})
+        }
+
       })
 
     }
