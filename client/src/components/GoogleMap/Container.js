@@ -10,7 +10,7 @@ export class Container extends React.Component {
   }
   
   export default GoogleApiComponent({
-    apiKey: "AIzaSyD1KLKK9vZ_Cs7AAlQFDEJlSa1X0xvq9tM"
+    apiKey: ""
   })(Container)
 
   export class Container extends React.Component {
