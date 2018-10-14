@@ -16,8 +16,10 @@ import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import 'react-dates/lib/css/_datepicker.css';
-import { firebase } from './firebase/firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import LoadingPage from "./components/LoadingPage.js";
+// import { firebase } from './firebase/firebase';
 
 {/*import Graph3D from  "./components/Graph3D";*/} 
 
