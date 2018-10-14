@@ -9,7 +9,7 @@ class Main extends Component {
         <section className="banner">
           <div id="tagline-block" className="container pt-5">
             <div className="col col-lg-6 col-md-8 pt-5">
-              <h1>Access your wells data. Anywhere. Anytime.</h1>
+              <h1 className="tag-Text">Access your well construction data. Anywhere. Anytime.</h1>
 
               <Link to="/login">
                 <button type="button" className="btn btn-log">
@@ -27,7 +27,7 @@ class Main extends Component {
 
         <section className="mobile-tagline container mb-2">
           <h1 className="text-center">
-            Access your wells data. Anywhere. Anytime.
+            Access your well construction data. Anywhere. Anytime.
           </h1>
         </section>
 
@@ -37,7 +37,7 @@ class Main extends Component {
               <h2>Want to have better handle of your casing string?</h2>
 
               <p>
-                Tork.n.drag is a platform to store all your well information. It
+                Torque.n.drag is a platform to store all your well information. It
                 allows you to locate your wells on map, click on each and see
                 the well trajectory, construction, run a torque and drag
                 analysis and conclude how likely is for your casing string

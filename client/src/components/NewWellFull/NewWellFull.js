@@ -1,9 +1,14 @@
 import React, {Component} from "react";
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+import { Router } from 'react-router';
 import "./NewWellFull.css";
-import data from "../../fullDataSetUnformatted.json";
-import CsvParse from "../UploadCSV";
+//import data from "../../fullDataSetUnformatted.json";
+import CsvParse from "../UploadCSV"; 
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth.js'
+import API from "../../utils/API";
 
+const data = JSON.parse(localStorage.getItem('pipeJSON'));
 
 const INITIAL_STATE = {
     metaData:{wellName:'',wellWUID:'',wellLocation:'',Longitude:'',Latitude:'',quickNote:''},
@@ -153,12 +158,9 @@ const byPropKey = (propertyName, value) => () => ({
 
     
 
+//note for later, change uid to email
 
 
-    const handleSubmit = (state,event) => {
-        event.preventDefault();
-        alert(JSON.stringify(data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread],null,2))
-    }
 
 
 class NewWellFull extends Component {
@@ -167,8 +169,55 @@ class NewWellFull extends Component {
         this.state = { ...INITIAL_STATE };
       }
 
+    
+      peaceOutSquirrelScout() {
+        this.props.history.push('/my-wells');
+        
+      }
+    
+handleSubmit = (state,event,uid) => {
+        event.preventDefault();
+        let surveyData=state.surveyData
+        let temp = data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread]
+        //create objects to pass to database
+        let wellObj = {
+            latitude:state.metaData.latitude,
+            longitude:state.metaData.longitude,
+            wellName:state.metaData.wellName,
+            wellUWI:state.metaData.wellWUID,
+            wellLocation:state.metaData.wellLocation,
+            pipeData:temp,
+            surveyData:surveyData,
+            comment:state.metaData.comment
+        }
 
- 
+        //pass to database
+        API.saveWell({
+            userId: uid,
+            wellData: wellObj
+
+        }).then(response=>{
+            //get data and save to session storage.then() redirect to mywells else throw an error
+            API.getUserAndWells({uid:uid}).then(response=>
+            {sessionStorage.setItem("userData",JSON.stringify(response.data.userData));
+            sessionStorage.setItem('wellData',JSON.stringify(response.data.wellData));
+            //redirect now
+                this.peaceOutSquirrelScout();
+            })
+            
+            
+        })
+
+    }
+
+      handleData = data => {
+        this.setState(byPropKey('surveyData',data))
+        alert('survey data processed');
+      }
+    
+      handleError = error => {
+        alert(error);
+      }
 
 
        handleChange = (state,event) => {
@@ -597,15 +646,31 @@ class NewWellFull extends Component {
             threadDisabled,
             canSubmit,
         } = this.state;
+
+        const keys = [
+            'Depth (ft)',
+            'Incl (Deg)',
+            'Azim (Deg)',
+            'XXXX',
+            'XXXX',
+            'XXXX',
+            'XXXX',
+            'XXXX',
+            'XXXX',
+            'XXXX',
+            'XXXX',
+            'XXXX',
+          ]
+
         return (
             <div>
                 <hr />
-                <form onSubmit={(event)=>{handleSubmit(this.state,event)}}>
+                <form onSubmit={(event)=>{this.handleSubmit(this.state,event,this.props.uid)}}>
                     <table style={{"width":"100%"}}>
                         <thead>
                             <tr>
                                 <th>Well name</th>
-                                <th>Well WUID</th>                                
+                                <th>Well UWI</th>                                
                                 <th>Well Location</th>                                
                                 <th>Longitude</th>
                                 <th>Latitude</th>
@@ -615,13 +680,18 @@ class NewWellFull extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                            <td><input value={metaData.wellName} onChange={event => {let obj=metaData; metaData.wellName=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
-                            <td><input value={metaData.wellWUID} onChange={event => {let obj=metaData; metaData.wellWUID=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
-                            <td><input value={metaData.wellLocation} onChange={event => {let obj=metaData; metaData.wellLocation=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
-                            <td><input value={metaData.Longitude} onChange={event => {let obj=metaData; metaData.Longitude=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
-                            <td><input value={metaData.Latitude} onChange={event => {let obj=metaData; metaData.Latitude=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
-                            <td><input value={metaData.quickNote} onChange={event => {let obj=metaData; metaData.quickNote=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
-                            <td>{/*<CsvParse />*/}</td>
+                            <td><input value={metaData.wellName} onChange={event => {let obj=metaData; obj.wellName=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.wellWUID} onChange={event => {let obj=metaData; obj.wellWUID=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.wellLocation} onChange={event => {let obj=metaData; obj.wellLocation=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.Longitude} onChange={event => {let obj=metaData; obj.Longitude=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.Latitude} onChange={event => {let obj=metaData; obj.Latitude=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td><input value={metaData.quickNote} onChange={event => {let obj=metaData; obj.quickNote=event.target.value; this.setState(byPropKey('metaData',obj))}} type="text"  placeholder="enter here" size="20" required /></td>
+                            <td> <CsvParse
+                                keys={keys}
+                                onDataUploaded={this.handleData}
+                                onError={this.handleError}
+                                render={onChange => <input type="file" onChange={onChange} />}
+                                /></td>
                             </tr>
                         </tbody>
                     </table>
@@ -712,4 +782,14 @@ class NewWellFull extends Component {
 
 }
 
-export default NewWellFull;
+const mapStateToProps = (state, props) => ({
+    uid: state.auth.uid
+});
+
+// const mapDispatchToProps = (dispatch) => ({
+//     //pass in well data here
+    
+
+// });
+
+export default connect(mapStateToProps, undefined)(NewWellFull);

@@ -9,14 +9,11 @@ const Footer = (props) => (
 					<ul className="list-reset">
 						<li>
 							<p className="h5 m0">
-							   Contact
+							   Contact for investment opportunities
 							</p>
 						</li>
 						<li>
-							<a href="#" className="h6 block">something@something.com </a>
-						</li>
-						<li>
-							<a href="#" className=" h6 block">(555) 555-555 </a>
+							<a href="#" className="h6 block">Rastegar8@gmail.com</a>
 						</li>
 					</ul>
 				</div>
