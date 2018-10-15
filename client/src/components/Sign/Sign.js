@@ -95,7 +95,7 @@ class Sign extends Component {
                 <br/>
 
                 <div className="confirm-password"><label className="h4" for="confirm-password">Confirm Password</label><br/> 
-                <input value={passwordTwo} onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} className="mb2" type="text"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
+                <input value={passwordTwo} onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} className="mb2" type="password"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
                 </div>
                 <br/>
 
