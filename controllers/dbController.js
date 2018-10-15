@@ -114,7 +114,11 @@ module.exports = {
       //console.log(JSON.stringify(req.body.uid)+"you hit the right one at least")
       db.User.findOne({'uid':req.body.uid},function(error,dbuser){
         let userData=dbuser;
-        console.log(dbuser)
+        //console.log(dbuser)
+        if(dbuser===null||dbuser===undefined)
+        {
+          return res.json({userData:'error creating user or user does not exist',wellData:[{wellName:'no data'}]})
+        }
         if(userData.well.length>0)
         {
                   db.Well.find({
@@ -126,7 +130,7 @@ module.exports = {
           res.json({userData:userData,wellData:[{wellName:'no data'}]})
         }
 
-      })
+      }).catch(err=> res.status(422).json(err));
 
     }
   }
