@@ -1,8 +1,8 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase.js';
 
-export const login = (uid) => ({
+export const login = (uid,email) => ({
     type: 'LOGIN',
-    uid
+    uid,email
 });
 
 export const logout = () => ({
@@ -12,11 +12,13 @@ export const logout = () => ({
 export const startLogin = () => {
     return () => {
         return firebase.auth().signInWithPopup(googleAuthProvider);
+        
     };
 };
 
 export const startLogout = () => {
     return () => {
-        return firebase.auth().signOut();
+        
+        return firebase.auth().signOut().then(()=>{sessionStorage.clear();});
     };
 };

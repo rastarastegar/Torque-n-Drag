@@ -3,8 +3,8 @@ const dbController = require("../controllers/dbController");
 
 // Matches with "/users"
 router.route("/")
-  .get(dbController.findAllByUser)
-  .post(dbController.user.create)
+  .get(dbController.well.findAll)
+  .post(dbController.well.create)
   
 
 // Matches with "/api/books/:id"
@@ -14,4 +14,3 @@ router.route("/")
 //   .delete(booksController.remove);
 
 module.exports = router;
-

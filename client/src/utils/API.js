@@ -2,13 +2,14 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getUsers: function() {
-    return axios.get("/users");
+  getUser: function(id) {
+    return axios.get("/users", id);
   },
-  // // Gets the book with the given id
-  // getUsers: function(id) {
-  //   return axios.get("/api/books/" + id);
-  // },
+
+  saveWell: function(wellData) {
+    return axios.post("/wells",wellData)
+  },
+
   // // Deletes the book with the given id
   // deleteBook: function(id) {
   //   return axios.delete("/api/books/" + id);
@@ -16,5 +17,16 @@ export default {
   // Saves a book to the database
   saveUser: function(userData) {
     return axios.post("/users", userData);
+  },
+
+  getUserAndWells: function(uid){
+    return axios.post("/api/userandwells",uid);
   }
+  // saveNewWell: function(wellData) {
+  //   return axios.post("/")
+  // }
+  // saveSurveyData: function(surveyData) {
+  //   return axios.post("")
+  // }
+
 };

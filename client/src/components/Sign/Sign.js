@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Sign.css";
-import "../../utils/API";
 import { auth } from '../../firebase';
 import API from "../../utils/API";
 
@@ -16,13 +15,6 @@ const INITIAL_STATE = {
   const byPropKey = (propertyName, value) => () => ({
     [propertyName]: value,
   });
-
-
-  // loadUsers = () => {
-  //   API.getUsers()
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err));
-  // };
 
 class Sign extends Component {
     constructor(props) {
@@ -44,11 +36,16 @@ class Sign extends Component {
               this.setState({ ...INITIAL_STATE });
                 //alert('signed up and logged in... remember to delete this alert message')
               //add the returned whatever to 
+              //alert(JSON.stringify(authUser.user.uid));
               API.saveUser({
                 firstName:firstname,
                 lastName:lastname,
                 email:email,
-              })
+                uid:authUser.user.uid,
+              }).then(()=>{
+                //alert('hold up it worked?')
+                API.getUserAndWells({uid:authUser.user.uid}).then(response=>{sessionStorage.setItem("userData",JSON.stringify(response.data.userData));sessionStorage.setItem('wellData',JSON.stringify(response.data.wellData))})
+              }).catch(error=>{alert(error)})
             })
             .catch(error => {
               this.setState(byPropKey('error', error));
@@ -82,27 +79,32 @@ class Sign extends Component {
         
              <form onSubmit={this.handleSubmit} >
                 
-                <label className="h4" for="first-name">First Name</label><br/> 
+                <div className="first-name"><label className="h4" for="first-name">First Name</label><br/> 
                 <input value={firstname} onChange={event => this.setState(byPropKey('firstname',event.target.value))} className="mb2" type="text"  placeholder="John" id="first-name" name="first-name" size="39" required autofocus />
-                <br/> <br/> 
+                </div>
+                <br/> 
 
-                <label className="h4" for="last-name">Last Name</label><br/> 
+                <div className="last-name"><label className="h4" for="last-name">Last Name</label><br/> 
                 <input value={lastname} onChange={event => this.setState(byPropKey('lastname', event.target.value))} className="mb2" type="text"  placeholder="Dane" id="last-name" name="last-name" size="39" required />
-                <br/> <br/>
+                </div>
+                <br/>
 
-                 <label className="h4" for="password">Password</label><br/> 
+                 <div className="password"><label className="h4" for="password">Password</label><br/> 
                  <input value={passwordOne} onChange={event => this.setState(byPropKey('passwordOne',event.target.value))} className="mb2" type="password"  placeholder="Password" id="password" name="password" size="39" required />
-                <br/> <br/>
+                 </div>
+                <br/>
 
-                <label className="h4" for="confirm-password">Confirm Password</label><br/> 
+                <div className="confirm-password"><label className="h4" for="confirm-password">Confirm Password</label><br/> 
                 <input value={passwordTwo} onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} className="mb2" type="text"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
-                <br/> <br/>
+                </div>
+                <br/>
 
-                <label className="h4" for="email">Email</label><br/> 
+                <div className="email"><label className="h4" for="email">Email</label><br/> 
                 <input value={email} onChange={event => this.setState(byPropKey('email', event.target.value))} type="text" className="mb2"  placeholder="Email" id="email" name="email" size="39" required />
-                 <br/> <br/> 
+                </div>
+                 <br/> 
 
-                 <input disabled={isInvalid} className="btn-primary" type="submit" />
+                 <div className="submit"><input disabled={isInvalid} className="btn-primary" type="submit" /></div>  
 
                  { error && <p>{error.message}</p> }
                  
