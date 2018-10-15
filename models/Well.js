@@ -8,13 +8,13 @@ const Schema = mongoose.Schema;
 const WellSchema = new Schema({
   // Lat
   latitude: {
-    type: Number
+    type: String
     // required: true,
   },
 
   // Long
   longitude: {
-    type: Number
+    type: String
     // required: true,
   },
   // Well Name
@@ -24,7 +24,7 @@ const WellSchema = new Schema({
   },
   // Well Name
   wellUWI: {
-    type: Number
+    type: String
     // required: true,
   },
 
