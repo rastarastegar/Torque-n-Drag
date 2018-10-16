@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Link } from 'react-router-dom'
 import "./MyWells.css"
-import "../Graph3D"
+import Graph3D from "../Graph3D"
 // const INITIAL_STATE={
 //     currentWell:{},
 //     userData:{},
@@ -39,6 +39,7 @@ const parseStringDataToInt = (wellData) => {
             {
                 return {"Depth (ft)":depth,"Incl (Deg)":incl,"Azim (Deg)":azim}
             }
+            return {"Depth (ft)":0,"Incl (Deg)":0,"Azim (Deg)":0}
             
         })
         e.surveyData=parsedSurveyData;
@@ -97,7 +98,7 @@ class MyWells extends Component {
                     
                 }
                 {JSON.stringify(this.state.currentWell)}
-               
+               <Graph3D />
             </div>
         )
     }
