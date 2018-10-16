@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Link } from 'react-router-dom'
 import "./MyWells.css"
-
+import Graph3D from "../Graph3D"
 // const INITIAL_STATE={
 //     currentWell:{},
 //     userData:{},
@@ -39,13 +39,20 @@ const parseStringDataToInt = (wellData) => {
             {
                 return {"Depth (ft)":depth,"Incl (Deg)":incl,"Azim (Deg)":azim}
             }
+            return {"Depth (ft)":0,"Incl (Deg)":0,"Azim (Deg)":0}
             
         })
         e.surveyData=parsedSurveyData;
         //parse pipedata
-        for(let x in e.pipeData)
+        for(let x in e.pipeData.labTestedData)
         {
-            e.pipeData[x] = parseFloat(e.pipeData[x])
+            e.pipeData.labTestedData[x] = parseFloat(e.pipeData.labTestedData[x])
+        }
+        for(let x in e.pipeData.wellProperties)
+        {   
+            let a =  parseFloat(e.pipeData.wellProperties[x])
+            if(!isNaN(a))
+            e.pipeData.wellProperties[x] = a;
         }
 
 
@@ -60,14 +67,6 @@ const parseStringDataToInt = (wellData) => {
 
 
 
-// let userData=JSON.parse(sessionStorage.getItem('userData'));
-
-// let wellData=JSON.parse(sessionStorage.getItem('wellData'));
-//temporary fix
-// if(sessionStorage.getItem('wellData')===null || sessionStorage.getItem('wellData')===undefined)
-// {
-//      wellData=[{wellName:'you dont have any wells'},{wellName:'you dont have any wells'}]
-// }
 
 class MyWells extends Component {
     constructor(props) {
@@ -99,7 +98,7 @@ class MyWells extends Component {
                     
                 }
                 {JSON.stringify(this.state.currentWell)}
-               
+               <Graph3D />
             </div>
         )
     }
