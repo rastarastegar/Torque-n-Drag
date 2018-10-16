@@ -57,8 +57,8 @@ const parseStringDataToInt = (wellData) => {
         }
 
 
-        e["latitude"] = parseInt(e.latitude);
-        e["longitude"] = parseInt(e.longitude);
+        e["latitude"] = parseFloat(e.latitude);
+        e["longitude"] = parseFloat(e.longitude);
         return e;
     })
 

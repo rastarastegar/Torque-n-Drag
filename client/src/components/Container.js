@@ -43,17 +43,18 @@ class Container extends Component {
     //   { lat: 27.037750, lng: -92.246405, wellName: "C" },
     //   { lat: 27.590521, lng: -87.458051, wellName: "A" }
     // ];
-    // console.log(this.props.wellData)
+    console.log(typeof this.props.wellData[0].latitude, typeof this.props.wellData[0].longitude)
     return (
       <Map
         id="myMap"
         options={{
-          center: { lat: this.props.wellData[0].latitiude, lng: this.props.wellData[0].longitude },
+          center: { lat: this.props.wellData[0].latitude, lng: this.props.wellData[0].longitude },
           zoom: 8
         }}
         onMapLoad={map => {
-          this.props.wellData.map(marker =>
-            this.createMarker(map, marker.latitiude, marker.longitude, marker.wellName)
+          this.props.wellData.forEach(marker =>
+            // console.log(marker.latitude)
+            this.createMarker(map, marker.latitude, marker.longitude, marker.wellName)
           );
         }}
       />
