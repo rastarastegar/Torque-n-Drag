@@ -99,10 +99,13 @@ class MyWells extends Component {
                     )
                     
                 }
+
+
                 {/* {JSON.stringify(this.state.currentWell)} */}
                 { this.state.graph3d ? (<Graph3D surveyData={this.state.currentWell.surveyData} />):(<Container wellData={this.state.wellData}/>)}
                  {/* <Graph3D surveyData={this.state.currentWell.surveyData} /> */}
-              
+                    
+
             </div>
         )
     }
