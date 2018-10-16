@@ -81,13 +81,13 @@ class Graph3D extends Component {
         if(depth!=0){depth=depth/100}
         if(Azim!=0){Azim=Azim/100}
         if(Incl!=0){Incl=Incl/100}
-            this.points.push(new THREE.Vector3(Azim, depth, Incl).multiplyScalar(3));
+             this.points.push(new THREE.Vector3(Azim, depth, Incl).multiplyScalar(1));
         }}
     
     
     //console.log([i, this.points[i].multiplyScalar(3)])
-    console.log(this.vectors[i]["Depth (ft)"])
-    console.log(i)
+    // console.log(this.vectors[i]["Depth (ft)"])
+    // console.log(i)
     }
 
 
