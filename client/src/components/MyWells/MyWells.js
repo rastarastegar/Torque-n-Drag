@@ -72,7 +72,8 @@ class MyWells extends Component {
     constructor(props) {
         super(props);
         this.state = {    
-         currentWell:{},
+        graph3d:false,
+         currentWell:{surveyData:''},
         userData:JSON.parse(sessionStorage.getItem('userData')),
         wellData:parseStringDataToInt(JSON.parse(sessionStorage.getItem('wellData'))),
       }}
@@ -91,14 +92,16 @@ class MyWells extends Component {
                     <div>
 
                         <button onClick={()=>{alert('stopping here. thinking of making these drop down options instead of buttons. when someone clicks, we will bring up the graphs/calculations/whatever on this page rather than redirecting.');
-                        this.setState(byPropKey('currentWell',element))}}>{element.wellName}</button> <br /><br />
+                        this.setState(byPropKey('currentWell',element));this.setState(byPropKey('graph3d',true))}}>{element.wellName}</button> <br /><br />
 
                     </div>
                     )
                     
                 }
-                {JSON.stringify(this.state.currentWell)}
-               <Graph3D />
+                {/* {JSON.stringify(this.state.currentWell)} */}
+                { this.state.graph3d ? (<Graph3D surveyData={this.state.currentWell.surveyData} />):(<div>asdf</div>)}
+                 {/* <Graph3D surveyData={this.state.currentWell.surveyData} /> */}
+                    
             </div>
         )
     }

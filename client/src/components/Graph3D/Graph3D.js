@@ -21,7 +21,8 @@ class Graph3D extends Component {
     
   componentDidMount() {
     var mesh, renderer, scene, camera, controls;
-
+    this.vectors=this.props.surveyData;
+    console.log(this.vectors);
     this.nEnd = 0;
     this.nMax=90; 
     this.nStep = 90;
@@ -61,10 +62,32 @@ class Graph3D extends Component {
 
     //points
     this.points = [];
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < this.vectors.length; i++) {
+        // if(this.vectors[i]["Azim (Deg)"]==0){this.vectors[i]["Azim (Deg)"]=1}
+        // if(this.vectors[i]["Depth (ft)"]==0){this.vectors[i]["Depth (ft)"]=1}
+        // if(this.vectors[i]["Incl (Deg)"]==0){this.vectors[i]["Incl (Deg)"]=1}
 
-    this.points.push(new THREE.Vector3(i, i, i).multiplyScalar(3));
+
+        //done to avoid faceless geometry
+        if(i==0){this.points.push(new THREE.Vector3(this.vectors[i]["Azim (Deg)"], this.vectors[i]["Depth (ft)"], this.vectors[i]["Incl (Deg)"]).multiplyScalar(3));}
+        else{
+        if(this.vectors[i]["Azim (Deg)"]==this.vectors[(i-1)]["Azim (Deg)"]&&this.vectors[i]["Depth (ft)"]==this.vectors[(i-1)]["Depth (ft)"]&&this.vectors[i]["Incl (Deg)"]==this.vectors[(i-1)]["Incl (Deg)"])
+        {
+            console.log('do nothing')
+        }else{
+        let depth = this.vectors[i]["Depth (ft)"];
+        let Azim = this.vectors[i]["Azim (Deg)"];
+        let Incl = this.vectors[i]["Incl (Deg)"];
+        if(depth!=0){depth=depth/100}
+        if(Azim!=0){Azim=Azim/100}
+        if(Incl!=0){Incl=Incl/100}
+            this.points.push(new THREE.Vector3(Azim, depth, Incl).multiplyScalar(3));
+        }}
+    
+    
     //console.log([i, this.points[i].multiplyScalar(3)])
+    console.log(this.vectors[i]["Depth (ft)"])
+    console.log(i)
     }
 
 
@@ -95,7 +118,10 @@ class Graph3D extends Component {
     this.scene.add(this.mesh);
 
     this.start();
+    
   }
+
+
 
   start = () => {
     if (!this.frameId) {
