@@ -22,7 +22,10 @@
     "express": "^4.16.4",
     "heroku-cli": "^7.0.9",
     "mongoose": "^5.3.4",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "orbit-controls-es6": "^2.0.0",
+    "three": "^0.97.0",
+    "three-orbit-controls": "^82.1.0"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",

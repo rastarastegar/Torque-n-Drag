@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Link } from 'react-router-dom'
 import "./MyWells.css"
-
+import "../Graph3D"
 // const INITIAL_STATE={
 //     currentWell:{},
 //     userData:{},
@@ -66,14 +66,6 @@ const parseStringDataToInt = (wellData) => {
 
 
 
-// let userData=JSON.parse(sessionStorage.getItem('userData'));
-
-// let wellData=JSON.parse(sessionStorage.getItem('wellData'));
-//temporary fix
-// if(sessionStorage.getItem('wellData')===null || sessionStorage.getItem('wellData')===undefined)
-// {
-//      wellData=[{wellName:'you dont have any wells'},{wellName:'you dont have any wells'}]
-// }
 
 class MyWells extends Component {
     constructor(props) {
