@@ -36,14 +36,14 @@ class Sign extends Component {
               this.setState({ ...INITIAL_STATE });
                 //alert('signed up and logged in... remember to delete this alert message')
               //add the returned whatever to 
-              //alert(JSON.stringify(authUser.user.uid));
+              // alert(JSON.stringify(authUser.user.uid));
               API.saveUser({
                 firstName:firstname,
                 lastName:lastname,
                 email:email,
                 uid:authUser.user.uid,
               }).then(()=>{
-                //alert('hold up it worked?')
+                // alert('hold up it worked?')
                 API.getUserAndWells({uid:authUser.user.uid}).then(response=>{sessionStorage.setItem("userData",JSON.stringify(response.data.userData));sessionStorage.setItem('wellData',JSON.stringify(response.data.wellData))})
               }).catch(error=>{alert(error)})
             })
@@ -95,7 +95,7 @@ class Sign extends Component {
                 <br/>
 
                 <div className="confirm-password"><label className="h4" for="confirm-password">Confirm Password</label><br/> 
-                <input value={passwordTwo} onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} className="mb2" type="text"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
+                <input value={passwordTwo} onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} className="mb2" type="password"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
                 </div>
                 <br/>
 

@@ -21,7 +21,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.4",
     "heroku-cli": "^7.0.9",
-    "mongoose": "^5.3.3",
+    "mongoose": "^5.3.4",
     "nodemon": "^1.18.4"
   },
   "devDependencies": {
