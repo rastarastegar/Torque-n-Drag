@@ -57,7 +57,7 @@ class Graph3D extends Component {
     this.camera.add(this.light);
 
     // axes
-    this.scene.add(new THREE.AxisHelper(20));
+    this.scene.add(new THREE.AxesHelper(20));
 
     //points
     this.points = [];

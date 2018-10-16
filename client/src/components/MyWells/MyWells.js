@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { Link } from 'react-router-dom'
 import "./MyWells.css"
 import Graph3D from "../Graph3D"
+import Container from "../Container"
 // const INITIAL_STATE={
 //     currentWell:{},
 //     userData:{},
@@ -25,8 +26,8 @@ const byPropKey = (propertyName, value) => () => ({
 // "TensionBody":"530144","TensionJoint":"1109920","TorsionBody":"52257","TorsionJoint":"44673","MakeupTorque":"27076"},"__v":0
 
 const parseStringDataToInt = (wellData) => {
+    console.log(wellData)
     return wellData.map(e=>{
-
             let parsedSurveyData = e.surveyData.map(element=>{
             let depth = parseFloat(element["Depth (ft)"])
             let incl = parseFloat(element["Incl (Deg)"])
@@ -84,7 +85,7 @@ class MyWells extends Component {
         return (
             
             <div>
-                
+                 
                 <hr></hr>
                 {
                     this.state.wellData.map(element => 
@@ -99,6 +100,7 @@ class MyWells extends Component {
                 }
                 {JSON.stringify(this.state.currentWell)}
                <Graph3D />
+               <Container wellData={this.state.wellData}/>
             </div>
         )
     }
