@@ -43,9 +43,15 @@ const parseStringDataToInt = (wellData) => {
         })
         e.surveyData=parsedSurveyData;
         //parse pipedata
-        for(let x in e.pipeData)
+        for(let x in e.pipeData.labTestedData)
         {
-            e.pipeData[x] = parseFloat(e.pipeData[x])
+            e.pipeData.labTestedData[x] = parseFloat(e.pipeData.labTestedData[x])
+        }
+        for(let x in e.pipeData.wellProperties)
+        {   
+            let a =  parseFloat(e.pipeData.wellProperties[x])
+            if(!isNaN(a))
+            e.pipeData.wellProperties[x] = a;
         }
 
 
