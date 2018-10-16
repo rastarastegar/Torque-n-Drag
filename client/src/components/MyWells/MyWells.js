@@ -92,23 +92,19 @@ class MyWells extends Component {
                     this.state.wellData.map(element => 
                     <div>
 
-                        <button onClick={()=>{alert('stopping here. thinking of making these drop down options instead of buttons. when someone clicks, we will bring up the graphs/calculations/whatever on this page rather than redirecting.');
+                        <button onClick={()=>{
                         this.setState(byPropKey('currentWell',element));this.setState(byPropKey('graph3d',true))}}>{element.wellName}</button> <br /><br />
 
                     </div>
                     )
                     
                 }
-<<<<<<< HEAD
-                {JSON.stringify(this.state.currentWell)}
-               <Graph3D />
-               <Container wellData={this.state.wellData}/>
-=======
+
                 {/* {JSON.stringify(this.state.currentWell)} */}
-                { this.state.graph3d ? (<Graph3D surveyData={this.state.currentWell.surveyData} />):(<div>asdf</div>)}
+                { this.state.graph3d ? (<Graph3D surveyData={this.state.currentWell.surveyData} />):(<Container wellData={this.state.wellData}/>)}
                  {/* <Graph3D surveyData={this.state.currentWell.surveyData} /> */}
                     
->>>>>>> d98792e399e9f66048c293ed8176592a33fdeb65
+
             </div>
         )
     }
