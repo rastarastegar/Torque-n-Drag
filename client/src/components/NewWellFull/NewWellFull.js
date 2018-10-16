@@ -180,13 +180,23 @@ handleSubmit = (state,event,uid) => {
         let surveyData=state.surveyData
         let temp = data[state.description][state.normSize][state.pipeId][state.normWeight][state.adjustWeight][state.grade][state.upset][state.thread]
         //create objects to pass to database
+        let wellProperties = {
+            "description":state.description,
+            "NorminalSize":state.normSize,
+            "pipeInnerDiameter":state.pipeId,
+            "norminalWeight":state.norminalWeight,
+            "adjustWeight":state.adjustWeight,
+            "grade":state.grade,
+            "upset":state.upset,
+            "thread":state.thread,
+        }
         let wellObj = {
             latitude:state.metaData.Latitude,
             longitude:state.metaData.Longitude,
             wellName:state.metaData.wellName,
             wellUWI:state.metaData.wellWUID,
             wellLocation:state.metaData.wellLocation,
-            pipeData:temp,
+            pipeData:{wellProperties:wellProperties,labTestedData:temp},
             surveyData:surveyData,
             comment:state.metaData.comment
         }

@@ -18,6 +18,7 @@ import MyWells from "../components/MyWells";
 import NewWell from "../components/NewWell";
 import NewWellFull from "../components/NewWellFull";
 import csvParse from "../components/UploadCSV";
+import Graph3D from "../components/Graph3D";
 
 export const history = createHistory();
 
@@ -34,6 +35,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/account" component={Account}/>
                 <PrivateRoute path="/new-well" component={NewWellFull}/>
                 <PrivateRoute path="/uploadcsv" component={csvParse}/>
+                <PrivateRoute path="/3dgraph" component={Graph3D} />
                 <Route component={NotFoundPage}/>
             </Switch>
             <Footer />

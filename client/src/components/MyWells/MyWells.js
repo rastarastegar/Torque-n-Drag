@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import { Link } from 'react-router-dom'
 import "./MyWells.css"
-
+import Graph3D from "../Graph3D"
+import Container from "../Container"
 // const INITIAL_STATE={
 //     currentWell:{},
 //     userData:{},
@@ -25,8 +26,11 @@ const byPropKey = (propertyName, value) => () => ({
 // "TensionBody":"530144","TensionJoint":"1109920","TorsionBody":"52257","TorsionJoint":"44673","MakeupTorque":"27076"},"__v":0
 
 const parseStringDataToInt = (wellData) => {
-    return wellData.map(e=>{
-
+    let checkForNoData = false;
+    if(wellData[0].wellName=='no data'){
+        checkForNoData=true;
+    }
+    return checkForNoData ?  wellData : wellData.map(e=>{
             let parsedSurveyData = e.surveyData.map(element=>{
             let depth = parseFloat(element["Depth (ft)"])
             let incl = parseFloat(element["Incl (Deg)"])
@@ -39,18 +43,25 @@ const parseStringDataToInt = (wellData) => {
             {
                 return {"Depth (ft)":depth,"Incl (Deg)":incl,"Azim (Deg)":azim}
             }
+            return {"Depth (ft)":0,"Incl (Deg)":0,"Azim (Deg)":0}
             
         })
         e.surveyData=parsedSurveyData;
         //parse pipedata
-        for(let x in e.pipeData)
+        for(let x in e.pipeData.labTestedData)
         {
-            e.pipeData[x] = parseFloat(e.pipeData[x])
+            e.pipeData.labTestedData[x] = parseFloat(e.pipeData.labTestedData[x])
+        }
+        for(let x in e.pipeData.wellProperties)
+        {   
+            let a =  parseFloat(e.pipeData.wellProperties[x])
+            if(!isNaN(a))
+            e.pipeData.wellProperties[x] = a;
         }
 
 
-        e["latitude"] = parseInt(e.latitude);
-        e["longitude"] = parseInt(e.longitude);
+        e["latitude"] = parseFloat(e.latitude);
+        e["longitude"] = parseFloat(e.longitude);
         return e;
     })
 
@@ -60,20 +71,13 @@ const parseStringDataToInt = (wellData) => {
 
 
 
-// let userData=JSON.parse(sessionStorage.getItem('userData'));
-
-// let wellData=JSON.parse(sessionStorage.getItem('wellData'));
-//temporary fix
-// if(sessionStorage.getItem('wellData')===null || sessionStorage.getItem('wellData')===undefined)
-// {
-//      wellData=[{wellName:'you dont have any wells'},{wellName:'you dont have any wells'}]
-// }
 
 class MyWells extends Component {
     constructor(props) {
         super(props);
         this.state = {    
-         currentWell:{},
+        graph3d:false,
+         currentWell:{surveyData:''},
         userData:JSON.parse(sessionStorage.getItem('userData')),
         wellData:parseStringDataToInt(JSON.parse(sessionStorage.getItem('wellData'))),
       }}
@@ -85,21 +89,25 @@ class MyWells extends Component {
         return (
             
             <div>
-                
+                 
                 <hr></hr>
                 {
                     this.state.wellData.map(element => 
                     <div>
 
-                        <button onClick={()=>{alert('stopping here. thinking of making these drop down options instead of buttons. when someone clicks, we will bring up the graphs/calculations/whatever on this page rather than redirecting.');
-                        this.setState(byPropKey('currentWell',element))}}>{element.wellName}</button> <br /><br />
+                        <button onClick={()=>{
+                        this.setState(byPropKey('currentWell',element));this.setState(byPropKey('graph3d',true))}}>{element.wellName}</button> <br /><br />
 
                     </div>
                     )
                     
                 }
-                {JSON.stringify(this.state.currentWell)}
-               
+
+                {/* {JSON.stringify(this.state.currentWell)} */}
+                { this.state.graph3d ? (<Graph3D surveyData={this.state.currentWell.surveyData} />):(<Container wellData={this.state.wellData}/>)}
+                 {/* <Graph3D surveyData={this.state.currentWell.surveyData} /> */}
+                    
+
             </div>
         )
     }
