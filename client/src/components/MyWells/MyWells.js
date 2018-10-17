@@ -26,9 +26,8 @@ const byPropKey = (propertyName, value) => () => ({
 // "TensionBody":"530144","TensionJoint":"1109920","TorsionBody":"52257","TorsionJoint":"44673","MakeupTorque":"27076"},"__v":0
 
 const parseStringDataToInt = (wellData) => {
-    console.log(wellData)
     let checkForNoData = false;
-    if(wellData[0].wellName=='no data'){
+    if(wellData[0].wellName=='no data' || wellData === null){
         checkForNoData=true;
     }
     return checkForNoData ?  wellData : wellData.map(e=>{
