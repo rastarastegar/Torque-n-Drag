@@ -1,5 +1,12 @@
 section {
     text-align: center;
+    background-size: cover;
+    height: 600px;
+    margin-bottom: 40px;
+}
+
+.title {
+    color: #B0BEC5;  
 }
 
 .mb2 {
@@ -18,7 +25,7 @@ section {
 }
 
 .h4 {
-    color: #50505050;
+    color: #B0BEC5;
     font-size: 20px;
 }
 
@@ -43,7 +50,7 @@ section {
 }
 
 .submit {
-    text-align: justify;
+    text-align: center;
 }
 
 
@@ -51,6 +58,10 @@ section {
 .mb2 {
     font-size: 15px;
     text-align: center;
+}
+
+.px2 {
+    background-image: url(../Main/images/drilling-img-3.jpg);
 }
 
 @media only screen and (max-width: 576px) {
