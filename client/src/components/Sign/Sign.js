@@ -74,7 +74,7 @@ class Sign extends Component {
 
     <section className="container px2">
         <div className="mx-auto center">
-            <h1>Create Your Account</h1>
+            <h1 className="title">Create Your Account</h1>
             <br/> 
         
              <form onSubmit={this.handleSubmit} >
@@ -104,9 +104,10 @@ class Sign extends Component {
                 </div>
                  <br/> 
 
-                 <div className="submit"><input disabled={isInvalid} className="btn-primary" type="submit" /></div>  
+                 <div className="submit" className="col col-lg-3 col-md-6 pt-2"><input disabled={isInvalid} className="btn btn-primary btn-block" type="submit" /></div>  
 
                  { error && <p>{error.message}</p> }
+
                  
             </form>
             <br/> <br/> 

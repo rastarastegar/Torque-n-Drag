@@ -16,6 +16,10 @@ section {
     margin-top: 30px;
 }
 
+.title {
+    color: #B0BEC5;
+}
+
 @media only screen and (max-width: 576px) {
 .h1-log-sign {
         color: #2e2727;

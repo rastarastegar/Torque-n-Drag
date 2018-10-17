@@ -31,7 +31,7 @@ class Login extends Component {
             .then(authUser => {
               this.setState({ ...INITIAL_STATE });
                 
-                alert('logged in... remember to delete this message')
+                // alert('logged in... remember to delete this message')
               
             })
             .catch(error => {
@@ -56,7 +56,7 @@ class Login extends Component {
 
     <section className="container px2">
         <div className="mx-auto center">
-            <h1>Create Your Account</h1>
+            <h1 className="title">Login Your Account</h1>
             <br/> 
         
              <form onSubmit={this.handleSubmit}>
@@ -69,7 +69,7 @@ class Login extends Component {
                  <input value={password} onChange={event => this.setState(byPropKey('password', event.target.value))} className="mb2" type="password"  placeholder="Password" id="password" name="password" size="39" required />
                  <br/> <br/>      
 
-                 <input disabled={isInvalid} className="btn-primary" type="submit" />
+                 <input disabled={isInvalid} className="btn btn-primary" type="submit" />
                  { error && <p>{error.message}</p> }
             </form>
             <br/> <br/> 
