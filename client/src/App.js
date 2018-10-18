@@ -17,12 +17,14 @@ import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
+
+//This page is on the block to be deleted
 import LoadingPage from "./components/LoadingPage.js";
+
 
 {/*import Graph3D from  "./components/Graph3D";*/} 
 
 // import React from "react";
-
 
 class App extends Component {
   render() {
@@ -68,7 +70,7 @@ const jsx = (
     </Provider>
 );
 
-ReactDOM.render(<LoadingPage />, document.getElementById("root"));
+ReactDOM.render(jsx, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged((user) => {
     if(user){
