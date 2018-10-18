@@ -15,7 +15,8 @@ export const PrivateRoute = ({
             <div>
                 <Header />
                 <Dashboard /> 
-                <Component {...props}/>
+                {props.match.path==="/dashboard" ? (<div></div>):(<Component {...props}/>)}
+                {/* <Component {...props}/> */}
             </div>
            
         ) : (
