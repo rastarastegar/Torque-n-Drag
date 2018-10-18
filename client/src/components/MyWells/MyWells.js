@@ -59,7 +59,7 @@ const parseStringDataToInt = (wellData) => {
             e.pipeData.wellProperties[x] = a;
         }
 
-
+        calculateTrajectory(parsedSurveyData);
         e["latitude"] = parseFloat(e.latitude);
         e["longitude"] = parseFloat(e.longitude);
         return e;
@@ -69,7 +69,135 @@ const parseStringDataToInt = (wellData) => {
         
     }
 
+const calculateTrajectory = (survey)=> {
+    //first determine sections
+let arr = survey;
+let sections = [];
+let stop=arr.length-1;
 
+//alert(JSON.stringify(survey))
+for(let i=0;i<arr.length;i++)
+{
+    let bool=true;
+
+
+    console.log(i)
+    console.log(i<=stop-2)
+    if(i<=stop-2)
+    {
+
+    
+
+    //detect tangent
+    if(arr[i]['Incl (Deg)']===arr[i+1]['Incl (Deg)'])
+    {
+        //find end of tangent
+        let x=i;
+        let end;
+        if(arr[x]['Incl (Deg)']!=arr[x+1]['Incl (Deg)']){end=x;}else
+        {   
+            
+            while(bool)
+            {
+                end=x;
+                
+                x++
+                if(x>=stop)
+                {
+                    bool=false
+                }else{
+                    if(arr[x]['Incl (Deg)']!=arr[x+1]['Incl (Deg)'])
+                    {bool=false}
+                }
+            }
+        }
+        sections.push({type:'tangent',start:i,end:end})
+        i=x-1;
+        
+    }else{
+
+    
+
+    //detect arc
+    if(arr[i]['Incl (Deg)']!=arr[i+1]['Incl (Deg)'])
+    {
+        let rate=arr[i+1]['Incl (Deg)']-arr[i]['Incl (Deg)'];
+        let xrate=rate;
+        let x = i;
+        while(bool)
+        {   
+            if(x>=stop)
+            {
+                bool=false;
+            }else{
+                xrate = arr[x+1]['Incl (Deg)']-arr[x]['Incl (Deg)'];
+                if(xrate!=rate)
+                {bool=false}
+            }
+            
+            x++;
+        }
+        sections.push({type:'arc',start:i,end:x-1})
+        i=x-1;
+
+        
+    }
+
+    }
+    
+    }
+}
+
+
+//do calculations on each section
+
+let calculatedData = [];
+
+let cos=Math.cos;
+let sin=Math.sin;
+
+console.log(sections)
+for(let i=0;i<sections.length;i++)
+{
+    let start=sections[i].start;
+    let end=sections[i].end;
+    let md1 = arr[start]['Depth (ft)']
+	let md2 = arr[end]['Depth (ft)']
+	let haz1= arr[start]['Azim (Deg)']
+	let haz2= arr[start]['Azim (Deg)']
+	let wd1= arr[start]['Incl (Deg)']
+    let wd2= arr[end]['Incl (Deg)']
+    
+	if (sections[i]['type'] == 'tangent'){
+		 for(let x = start; x<=end; x++)
+		 {//if haz1 to haz2==0 well is not moving in east/west direction use east and west data from previous
+            //if wd1 to wd2==0 well is not moving up or down direction use east west from previous
+			let north = ((md2-md1)*sin(wd2)*cos(haz2))
+			let east = ((md2-md1)* sin(wd2)*sin(haz2))
+			let tvd = ((md2-md1)* cos(wd2))
+			
+			calculatedData.push({north:north,east:east,tvd:tvd})
+			
+		 }
+}
+	
+	if (sections[i]['type'] == 'arc'){
+		for(let x = start; x<=end; x++)
+        { //if haz1 to haz2==0 well is not moving in east/west direction use east and west data from previous
+            //if wd1 to wd2==0 well is not moving up or down direction use east west from previous
+			let north= ((md2-md1)*(cos(wd1)-cos(wd2))*(sin(haz2)-sin(haz1))/((wd2-wd1)*(haz2-haz1)))
+			let east=((md2-md1)*(cos(wd1)-cos(wd2))*(cos(haz1)-cos(haz1)-cos(haz2))/((wd2-wd1)*(haz2-haz1)))
+			let tvd = ((md2-md1)*(sin(wd2)-sin(wd1))/(wd2-wd1))
+			
+			calculatedData.push({north:north,east:east,tvd:tvd})
+		
+		}
+}
+
+
+}
+console.log(calculatedData);
+}
 
 
 class MyWells extends Component {
@@ -103,7 +231,7 @@ class MyWells extends Component {
                     
                 }
 
-                {/* {JSON.stringify(this.state.currentWell)} */}
+                { JSON.stringify(this.state.currentWell)}
                 { this.state.graph3d ? (<Graph3D surveyData={this.state.currentWell.surveyData} />):(<Container wellData={this.state.wellData}/>)}
                  {/* <Graph3D surveyData={this.state.currentWell.surveyData} /> */}
                     
