@@ -31,7 +31,7 @@ API.getUserAndWells({uid:uid}).then(response=>{sessionStorage.setItem("userData"
             <Link className="link-class" to="/new-well"><button className="btn btn-new">New Well</button></Link> <br /> <br />
             <Link className="link-class" to="/my-wells"><button className="btn btn-my-well">My Wells</button></Link> <br /> <br />
             <Link className="link-class" to="/account"><button className="btn btn-account">Account Settings</button></Link> <br /> <br />
-            <Link className="link-class" to="/3dgraph"><button className="btn btn-graph">3D Graph</button></Link> <br /> <br />
+       
         </ul>
     </div>
     {/* </section> */}
