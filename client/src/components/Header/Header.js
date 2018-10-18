@@ -17,11 +17,11 @@ class Header extends Component {
 		return (<header>
 			<div id="flex-header" className="container">
 				<div className="col col-sm-6 col-4" id="logo"><Link to="/">
-					<img src="./images/logo.png" /></Link>
+					<img src="./images/logo.png" alt="site logo"/></Link>
 				</div>
 
 				<div className="col col-6" id="mobile-logo"><Link to="/">
-					<img src="./images/logo-mobile.png" /></Link>
+					<img src="./images/logo-mobile.png" alt="mobile site logo"/></Link>
 				</div>
 
 				<a href="javascript:void(0);" className="icon" onClick={this.myFunction}>

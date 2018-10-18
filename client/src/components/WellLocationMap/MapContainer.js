@@ -6,7 +6,7 @@ import InfoWindow from "./InfoWindow";
 //code from http://cuneyt.aliustaoglu.biz/en/using-google-maps-in-react-without-custom-libraries/
 
 
-class Container extends Component {
+class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.createInfoWindow = this.createInfoWindow.bind(this);
@@ -43,6 +43,10 @@ class Container extends Component {
     //   { lat: 27.037750, lng: -92.246405, wellName: "C" },
     //   { lat: 27.590521, lng: -87.458051, wellName: "A" }
     // ];
+    {(this.props.wellData === null || this.props.wellData === undefined)
+return <div></div>
+    }
+    
     console.log(typeof this.props.wellData[0].latitude, typeof this.props.wellData[0].longitude)
     return (
       <Map
@@ -62,4 +66,4 @@ class Container extends Component {
   }
 }
 
-export default Container;
+export default MapContainer;

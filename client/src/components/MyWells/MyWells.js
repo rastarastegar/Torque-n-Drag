@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { Link } from 'react-router-dom'
 import "./MyWells.css"
 import Graph3D from "../Graph3D"
-import Container from "../Container"
+import Container from "../WellLocationMap/MapContainer"
 // const INITIAL_STATE={
 //     currentWell:{},
 //     userData:{},

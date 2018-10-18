@@ -79,27 +79,27 @@ class Sign extends Component {
         
              <form onSubmit={this.handleSubmit} >
                 
-                <div className="first-name"><label className="h4" for="first-name">First Name</label><br/> 
+                <div name="first-name"><label className="h4" htmlFor="first-name">First Name</label><br/> 
                 <input value={firstname} onChange={event => this.setState(byPropKey('firstname',event.target.value))} className="mb2" type="text"  placeholder="John" id="first-name" name="first-name" size="39" required autofocus />
                 </div>
                 <br/> 
 
-                <div className="last-name"><label className="h4" for="last-name">Last Name</label><br/> 
+                <div name="last-name"><label className="h4" htmlFor="last-name">Last Name</label><br/> 
                 <input value={lastname} onChange={event => this.setState(byPropKey('lastname', event.target.value))} className="mb2" type="text"  placeholder="Dane" id="last-name" name="last-name" size="39" required />
                 </div>
                 <br/>
 
-                 <div className="password"><label className="h4" for="password">Password</label><br/> 
+                 <div name="password"><label className="h4" htmlFor="password">Password</label><br/> 
                  <input value={passwordOne} onChange={event => this.setState(byPropKey('passwordOne',event.target.value))} className="mb2" type="password"  placeholder="Password" id="password" name="password" size="39" required />
                  </div>
                 <br/>
 
-                <div className="confirm-password"><label className="h4" for="confirm-password">Confirm Password</label><br/> 
+                <div name="confirm-password"><label className="h4" htmlFor="confirm-password">Confirm Password</label><br/> 
                 <input value={passwordTwo} onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))} className="mb2" type="password"  placeholder="Verify Password" id="confirm-password" name="confirm-password" size="39" required />
                 </div>
                 <br/>
 
-                <div className="email"><label className="h4" for="email">Email</label><br/> 
+                <div name="email"><label className="h4" htmlFor="email">Email</label><br/> 
                 <input value={email} onChange={event => this.setState(byPropKey('email', event.target.value))} type="text" className="mb2"  placeholder="Email" id="email" name="email" size="39" required />
                 </div>
                  <br/> 
