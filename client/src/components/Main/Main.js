@@ -34,6 +34,7 @@ class Main extends Component {
         <section className="container mb-5">
           <div className="mxn2">
             <div className="mx-auto px-3 text-center">
+            <div className="transbox">
               <h2>Want to have better handle of your casing string?</h2>
 
               <p>
@@ -45,6 +46,7 @@ class Main extends Component {
                 report on the fly and take it to your meetings or implement
                 graphs in your next presentation.
               </p>
+            </div>
 
               <div id="mobile-buttons">
                 <Link to="/login">

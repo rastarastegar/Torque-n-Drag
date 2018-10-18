@@ -68,6 +68,27 @@ section {
 .h1-log-sign {
     color: #2e2727;
     font-size: 26px;
+
+}
+
+.first-name {
+    text-align: center;
+}
+
+.last-name {
+    text-align: center;
+}
+
+.password {
+    text-align: center;
+}
+
+.confirm-password {
+    text-align: center;
+}
+
+.email {
+    text-align: center;
 }
 
 .h4 {
