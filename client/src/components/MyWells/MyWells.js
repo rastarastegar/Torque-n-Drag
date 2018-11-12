@@ -146,7 +146,7 @@ const calculateTrajectory = (survey)=> {
     }
     //push to a sections array.
     //if arc do fromula here
-
+    console.log(sections)
     sections.forEach((element)=>{
     let start=element.start;
     let end=element.end;
