@@ -22,7 +22,7 @@
     "moments": "^0.0.2",
     "normalize.css": "^8.0.0",
     "numeral": "^2.0.6",
-    "papaparse": "^4.6.1",
+    "papaparse": "^5.3.0",
     "prop-types": "^15.6.2",
     "raf": "^3.4.0",
     "ramda": "^0.25.0",
