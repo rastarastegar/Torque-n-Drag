@@ -1,15 +1,8 @@
-//import "./3.js";
 import React, {Component} from "react";
 import "./Graph3D.css";
-//import { Link } from 'react-router-dom'
-//import CsvParse from  "../UploadCSV"; 
-//import "./tubular.js";
-//import "./vectors.js";
-// import * as THREE from "./3.js";
 import * as THREE from "three";
 import OrbitControls from "orbit-controls-es6";
-//import ExpoTHREE from "expo-three";
-// import threeEntryPoint from './threeEntryPoint';
+
 
 
 
@@ -69,19 +62,19 @@ class Graph3D extends Component {
 
 
         //done to avoid faceless geometry
-        if(i==0){this.points.push(new THREE.Vector3(this.vectors[i]["Azim (Deg)"], this.vectors[i]["Depth (ft)"], this.vectors[i]["Incl (Deg)"]).multiplyScalar(3));}
+        if(i==0){this.points.push(new THREE.Vector3(this.vectors[i]["east"], this.vectors[i]["tvd"], this.vectors[i]["north"]).multiplyScalar(1));}
         else{
-        if(this.vectors[i]["Azim (Deg)"]==this.vectors[(i-1)]["Azim (Deg)"]&&this.vectors[i]["Depth (ft)"]==this.vectors[(i-1)]["Depth (ft)"]&&this.vectors[i]["Incl (Deg)"]==this.vectors[(i-1)]["Incl (Deg)"])
+        if(this.vectors[i]["east"]==this.vectors[(i-1)]["east"]&&this.vectors[i]["tvd"]==this.vectors[(i-1)]["tvd"]&&this.vectors[i]["north"]==this.vectors[(i-1)]["north"])
         {
             console.log('do nothing')
         }else{
-        let depth = this.vectors[i]["Depth (ft)"];
-        let Azim = this.vectors[i]["Azim (Deg)"];
-        let Incl = this.vectors[i]["Incl (Deg)"];
-        if(depth!=0){depth=depth/100}
-        if(Azim!=0){Azim=Azim/100}
-        if(Incl!=0){Incl=Incl/100}
-             this.points.push(new THREE.Vector3(Azim, depth, Incl).multiplyScalar(1));
+        let tvd = this.vectors[i]["tvd"];
+        let east = this.vectors[i]["east"];
+        let north = this.vectors[i]["north"];
+         if(tvd!=0){tvd=tvd/1000}
+         if(east!=0){east=east/1000}
+         if(north!=0){north=north/1000}
+             this.points.push(new THREE.Vector3(east, tvd, north).multiplyScalar(1));
         }}
     
     
